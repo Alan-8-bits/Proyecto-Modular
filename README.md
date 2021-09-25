@@ -3,9 +3,11 @@
 Instalacion
 
 - Descargar e instalar nodejs v13.9.0^
-- En consola:
-  - ``` npm install ```
-  - ``` npm start ```
+- Ejecutar comando ``` npm install ``` en linea de comandos
+- Correr base de datos
+- Adaptar el archivo /config/config.json para la conexion a base de datos
+- Ejecutar ``` sequelize-cli db:migrate ``` 
+- Ejecutar ``` npm start ```
 
 Interactuar desde algun API tester como [Postman](https://www.postman.com/)
 
