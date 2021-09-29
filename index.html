@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Formulario</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Formulario</h1>
+        </div>
+        
+        <div class="container">
+            <h2>Empresas</h2>
+            <form action="/api/empresas/" method="POST">
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" aria-describedby="emailHelp" placeholder="Ingresa el nombre de la empresa" name="nombre">
+                </div>
+                <div class="form-group">
+                    <label for="correo">Correo</label>
+                    <input type="email" class="form-control" id="correo" aria-describedby="emailHelp" placeholder="Ingresa el correo" name="correo">
+                </div>
+                <div class="form-group">
+                    <label for="direccion">Direccion</label>
+                    <input type="text" class="form-control" id="direccion" aria-describedby="emailHelp" name="direccion" placeholder="Ingresa la direccion">
+                </div>
+                <div class="form-group">
+                    <label for="giro">Giro</label>
+                    <input type="text" class="form-control" id="giro" aria-describedby="emailHelp" name="giro" placeholder="Ingresa el giro de la empresa">
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </div>
+
+        <div class="container">
+            <h2>Inspecciones</h2>
+            <form action="/api/inspecciones/" method="POST">
+                <div class="form-group">
+                    <label for="fecha">Fecha</label>
+                    <input type="date" class="form-control" id="fecha" aria-describedby="emailHelp" placeholder="Ingresa la fecha" name="fecha">
+                </div>
+                <div class="form-group">
+                    <label for="estatus">Estatus</label>
+                    <input type="text" class="form-control" id="estatus" aria-describedby="emailHelp" name="estatus" placeholder="Ingresa el estatus">
+                </div>
+                <div class="form-group">
+                    <label for="empresa_id">Id de la empresa</label>
+                    <input type="number" class="form-control" id="empresa_id" aria-describedby="emailHelp" name="empresa_id" placeholder="Ingresa el id de la empresa">
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </div>
+
+        <div class="container">
+            <h2>Formularios</h2>
+            <form action="/api/formularios/" method="POST">
+                <div class="form-group">
+                    <label for="respuestas">Respuestas</label>
+                    <input type="text" class="form-control" id="respuestas" aria-describedby="emailHelp" placeholder="Ingresa las respuestas" name="respuestas">
+                </div>
+                <div class="form-group">
+                    <label for="respuesta_modelo_ML">Modelo de Machine Learning</label>
+                    <input type="text" class="form-control" id="respuesta_modelo_ML" aria-describedby="emailHelp" name="respuesta_modelo_ML" placeholder="Respuesta de el modelo de Machine Learning">
+                </div>
+                <div class="form-group">
+                    <label for="direccion_archivo">Ruta de Archivo</label>
+                    <input type="text" class="form-control" id="direccion_archivo" aria-describedby="emailHelp" name="direccion_archivo" placeholder="Ingresa la ruta de el archivo">
+                </div>
+                <div class="form-group">
+                    <label for="empresa_id">Id de la empresa</label>
+                    <input type="number" class="form-control" id="empresa_id" aria-describedby="emailHelp" name="empresa_id" placeholder="Ingresa el id de la empresa">
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </div>
+
+    </body>
+</html>
