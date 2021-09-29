@@ -4,8 +4,8 @@ Instalacion
 
 - Descargar e instalar nodejs v13.9.0^
 - Ejecutar comando ``` npm install ``` en linea de comandos
-- Correr base de datos
-- Adaptar el archivo /config/config.json para la conexion a base de datos
+- Crear y correr base de datos
+- Adaptar el archivo /.env para la conexion a base de datos
 - Ejecutar ``` sequelize-cli db:migrate ``` 
 - Ejecutar ``` npm start ```
 

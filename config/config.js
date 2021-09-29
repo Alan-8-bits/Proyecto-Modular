@@ -1,10 +1,7 @@
-{
+require('dotenv').config()
+module.exports = {
   "development": {
-    "username": "root",
-    "password": null,
-    "database": "database_development",
-    "host": "localhost",
-    "dialect": "mysql"
+    "use_env_variable": "DATABASE_URL"
   },
   "test": {
     "username": "root",
@@ -20,4 +17,4 @@
     "host": "localhost",
     "dialect": "mysql"
   }
-}
+};
