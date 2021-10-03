@@ -1,0 +1,75 @@
+<h1>Riesgo Externo</h1>
+<h2>Tipos de riesgo</h2>
+
+<div class="form-group" id="tipo_riesgo">
+    <label for="tipo_riesgo">Seleccionar una o varias opciones si en un radio de 50 metros se encuentra alguno de los siguientes</label><br>
+
+    <div class="input-group">
+        <span class="input-group-addon">
+            <input type="checkbox" id="rio_canal" name="tipo_riesgo" value="rio_canal">
+        </span>
+        <label class="form-control" for="rio_canal">Rio o Canal</label><br>
+    </div>
+    
+    <div class="input-group">
+        <span class="input-group-addon">
+            <input type="checkbox" id="ladera" name="tipo_riesgo" value="ladera">
+        </span>
+        <label class="form-control" for="ladera">Ladera</label><br>
+    </div>
+
+    <div class="input-group">
+        <span class="input-group-addon">
+            <input type="checkbox" id="estacion_servicio" name="tipo_riesgo" value="estacion_servicio">
+        </span>
+        <label class="form-control" for="estacion_servicio">Estacion de servicio</label><br>
+    </div>
+
+    <div class="input-group">
+        <span class="input-group-addon">
+            <input type="checkbox" id="estacion_carburacion" name="tipo_riesgo" value="estacion_carburacion">
+        </span>
+        <label class="form-control" for="estacion_carburacion">Estacion de carburacion</label><br>
+    </div>
+
+    <div class="input-group">
+        <span class="input-group-addon">
+            <input type="checkbox" id="fabrica" name="tipo_riesgo" value="fabrica">
+        </span>
+        <label class="form-control" for="fabrica">Fabrica</label><br>
+    </div>
+
+    <div class="input-group">
+        <span class="input-group-addon">
+            <input type="checkbox" id="ninguna" name="tipo_riesgo" value="ninguna">
+        </span>
+        <label class="form-control" for="ninguna">Ninguna</label><br>
+    </div>
+
+</div>
+
+<div class="form-group" id="isNinguna" style="display: block;">
+    <h2>Distancia</h2>
+    <label for="metros_riesgo">Distancia que existe a la opción seleccionada (en metros)</label>
+    <input type="number" class="form-control" id="metros_riesgo" name="metros_riesgo" placeholder="Ingresa la distancia en metros">
+</div>
+
+<script>
+    document.getElementById('tipo_riesgo').addEventListener('change', (event) => {
+        ningunaSelected(event.target);
+        hideIfSelected('ninguna',true,'isNinguna',['metros_riesgo']);
+    });
+
+    function ningunaSelected(input){
+        if(input.id == "ninguna"){
+            document.getElementById("rio_canal").checked = false;
+            document.getElementById("ladera").checked = false;
+            document.getElementById("estacion_servicio").checked = false;
+            document.getElementById("estacion_carburacion").checked = false;
+            document.getElementById("fabrica").checked = false;
+        }
+        else{
+            document.getElementById("ninguna").checked = false;
+        }
+    }
+</script>
