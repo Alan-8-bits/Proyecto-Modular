@@ -5,6 +5,16 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("#datos_generales_form").load("/datos-generales");
+                $("#riesgo_externo_form").load("/riesgo-externo");
+            });
+        </script>
+
+        <link rel="shortcut icon" href="#">
     </head>
     <body>
         <div class="container">
@@ -12,6 +22,76 @@
         </div>
         
         <div class="container">
+            <form action="/api/empresas/" method="POST">
+
+                <div id="datos_generales_form"></div>
+                <div id="riesgo_externo_form"></div>
+
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </div>
+
+        
+        
+        <script>
+            function hideIfSelected(toCheck,hide,toHide,toReset) {
+                if(document.getElementById(toCheck).checked){
+                    document.getElementById(toHide).style.display = hide ? 'none' : 'block';
+                }
+                else{
+                    document.getElementById(toHide).style.display = hide ? 'block' : 'none';
+                }
+                resetInputs(toReset);
+            }
+            function resetInputs(toReset){
+                toReset.forEach(element => {
+                    if(document.getElementById(element).type == "radio"){ 
+                        document.getElementById(element).checked = false;
+                    }else{
+                        document.getElementById(element).value = "";
+                    }
+                });
+            }
+        </script>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <div class="container" style="visibility: hidden;">
             <h2>Empresas</h2>
             <form action="/api/empresas/" method="POST">
                 <div class="form-group">
@@ -34,7 +114,7 @@
             </form>
         </div>
 
-        <div class="container">
+        <div class="container" style="visibility: hidden;">
             <h2>Inspecciones</h2>
             <form action="/api/inspecciones/" method="POST">
                 <div class="form-group">
@@ -53,7 +133,7 @@
             </form>
         </div>
 
-        <div class="container">
+        <div class="container" style="visibility: hidden;">
             <h2>Formularios</h2>
             <form action="/api/formularios/" method="POST">
                 <div class="form-group">

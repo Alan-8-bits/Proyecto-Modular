@@ -16,6 +16,12 @@ require("./routes/index.js")(app);
 app.get('/', (req, res) => {
      res.sendFile(__dirname + '/index.html');
 });
+app.get('/datos-generales', (req, res) => {
+     res.sendFile(__dirname + '/views/datos_generales.html');
+});
+app.get('/riesgo-externo', (req, res) => {
+     res.sendFile(__dirname + '/views/riesgo_externo.html');
+});
 
 const port = parseInt(process.env.PORT, 10) || 8000;
 app.set('port', port);

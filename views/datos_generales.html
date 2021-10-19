@@ -1,0 +1,165 @@
+<h2>Datos Generales</h2>
+<div class="form-group">
+    <label for="nombre">Nombre</label>
+    <input type="text" class="form-control" id="nombre" placeholder="Ingresa el nombre de la empresa" name="nombre">
+</div>
+<div class="form-group">
+    <label for="correo">Correo</label>
+    <input type="email" class="form-control" id="correo" placeholder="Ingresa el correo" name="correo">
+</div>
+<div class="form-group">
+    <label for="direccion">Direccion</label>
+    <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Ingresa la direccion">
+</div>
+
+<h2>Giro</h2>
+<div class="form-group" onclick="hideIfSelected('alojamiento',false,'isAlojamiento',['alberca_si','alberca_no']);">
+    <label for="giro">Selecciona el giro de la empresa</label><br>
+
+    <div class="input-group">
+        <span class="input-group-addon">
+            <input type="radio" id="espectaculos" name="giro" value="espectaculos">
+        </span>
+        <label class="form-control" for="espectaculos">Eventos y espectáculos o estadios</label><br>
+    </div>
+    
+    <div class="input-group">
+        <span class="input-group-addon">
+            <input type="radio" id="estaticas" name="giro" value="estaticas">
+        </span>
+        <label class="form-control" for="estaticas">Actividades estáticas, aserradero, banco y trituración de piedra o banco de área</label><br>
+    </div>
+
+    <div class="input-group">
+        <span class="input-group-addon">
+            <input type="radio" id="alojamiento" name="giro" value="alojamiento">
+        </span>
+        <label class="form-control" for="alojamiento">Alojamiento temporal, educacional</label><br>
+    </div>
+
+</div>
+<div class="form-group" id="isAlojamiento" style="display: none;">
+    <label for="giro">Cuenta con alberca?</label><br>
+
+    <div class="input-group">
+        <span class="input-group-addon">
+            <input type="radio" id="alberca_si" name="alberca" value="true">
+        </span>
+        <label class="form-control" for="alberca_si">Si</label><br>
+    </div>
+
+    <div class="input-group">
+        <span class="input-group-addon">
+            <input type="radio" id="alberca_no" name="alberca" value="false">
+        </span>
+        <label class="form-control" for="alberca_no">No</label><br>
+    </div>
+
+</div>
+
+
+<h2>Razon social</h2>
+<div class="form-group">
+    <label for="razon_social">Razon social</label>
+    <input type="text" class="form-control" id="razon_social" name="razon_social" placeholder="Ingresa la razon social">
+</div>
+
+<h2>Informacion del inmueble</h2>
+<div class="form-group">
+    <label for="giro">Giro nuevo?</label><br>
+    <div class="input-group">
+        <span class="input-group-addon">
+            <input type="radio" id="giroNuevo_si" name="giroNuevo" value="true">
+        </span>
+        <label class="form-control" for="giroNuevo_si">Si</label><br>
+    </div>
+
+    <div class="input-group">
+        <span class="input-group-addon">
+            <input type="radio" id="giroNuevo_no" name="giroNuevo" value="false">
+        </span>
+        <label class="form-control" for="giroNuevo_no">No</label><br>
+    </div>
+</div>
+
+<div class="form-group" onclick="hideIfSelected('nuevaCreacion_si',false,'isNuevaCreacion',['metros_construccion']);">
+    <label for="giro">Construccion de nueva creacion?</label><br>
+    <div class="input-group">
+        <span class="input-group-addon">
+            <input type="radio" id="nuevaCreacion_si" name="nuevaCreacion" value="true">
+        </span>
+        <label class="form-control" for="nuevaCreacion_si">Si</label><br>
+    </div>
+
+    <div class="input-group">
+        <span class="input-group-addon">
+            <input type="radio" id="nuevaCreacion_no" name="nuevaCreacion" value="false">
+        </span>
+        <label class="form-control" for="nuevaCreacion_no">No</label><br>
+    </div>
+</div>
+
+<div class="form-group" id="isNuevaCreacion" style="display: none;">
+    <label for="metros_construccion">Metros cuadrados de construccion</label>
+    <input type="number" class="form-control" id="metros_construccion" name="metros_construccion" placeholder="Ingresa los metros cuadrados de la construccion">
+</div>
+
+<div class="form-group" onclick="hideIfSelected('ampliacion_si',false,'isAmpliacion',['metros_ampliacion']);">
+    <label for="giro">Realizo ampliacion o remodelacion?</label><br>
+    <div class="input-group">
+        <span class="input-group-addon">
+            <input type="radio" id="ampliacion_si" name="ampliacion" value="true">
+        </span>
+        <label class="form-control" for="ampliacion_si">Si</label><br>
+    </div>
+
+    <div class="input-group">
+        <span class="input-group-addon">
+            <input type="radio" id="ampliacion_no" name="ampliacion" value="false">
+        </span>
+        <label class="form-control" for="ampliacion_no">No</label><br>
+    </div>
+</div>
+
+<div class="form-group" id="isAmpliacion" style="display: none;">
+    <label for="metros_ampliacion">Metros cuadrados de ampliacion</label>
+    <input type="number" class="form-control" id="metros_ampliacion" name="metros_ampliacion" placeholder="Ingresa los metros cuadrados de la ampliacion">
+</div>
+
+<div class="form-group">
+    <label for="giro">Realizo la instalacion de estructuras metalicas?</label><br>
+    <div class="input-group">
+        <span class="input-group-addon">
+            <input type="radio" id="estructura_metalica_si" name="estructura_metalica" value="true">
+        </span>
+        <label class="form-control" for="estructura_metalica_si">Si</label><br>
+    </div>
+
+    <div class="input-group">
+        <span class="input-group-addon">
+            <input type="radio" id="estructura_metalica_no" name="estructura_metalica" value="false">
+        </span>
+        <label class="form-control" for="estructura_metalica_no">No</label><br>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="numero_trabajadores">Numero de trabajadores</label>
+    <input type="number" class="form-control" id="numero_trabajadores" name="numero_trabajadores" placeholder="Ingresa el numero de trabajadores">
+</div>
+<div class="form-group">
+    <label for="aforo">Aforo</label>
+    <input type="number" class="form-control" id="aforo" name="aforo" placeholder="Ingresa el aforo">
+</div>
+<div class="form-group">
+    <label for="niveles_construccion">Niveles de construccion</label>
+    <input type="number" class="form-control" id="niveles_construccion" name="niveles_construccion" placeholder="Ingresa los niveles de construccion">
+</div>
+<div class="form-group">
+    <label for="numero_sotanos">Numero de sotanos</label>
+    <input type="number" class="form-control" id="numero_sotanos" name="numero_sotanos" placeholder="Ingresa el numero de sotanos">
+</div>
+<div class="form-group">
+    <label for="horario_trabajo">Horario de trabajo</label>
+    <input type="number" class="form-control" id="horario_trabajo" name="horario_trabajo" placeholder="Ingresa el horario de trabajo">
+</div>
