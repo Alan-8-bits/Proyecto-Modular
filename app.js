@@ -19,8 +19,8 @@ app.get('/', (req, res) => {
 app.get('/datos-generales', (req, res) => {
      res.sendFile(__dirname + '/views/datos_generales.html');
 });
-app.get('/riesgo-externo', (req, res) => {
-     res.sendFile(__dirname + '/views/riesgo_externo.html');
+app.get('/giro', (req, res) => {
+     res.sendFile(__dirname + '/views/giro.html');
 });
 
 const port = parseInt(process.env.PORT, 10) || 8000;
