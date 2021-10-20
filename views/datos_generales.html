@@ -1,148 +1,476 @@
-<h2 style="text-align: center;font-family: 'Product Sans';">Datos Generales</h2>
-<hr>
+<h2>
+  Datos Generales
+</h2>
+
+<hr />
+
 <div class="form-group">
-    <label for="razon_social">Razon Social</label>
-    <input type="text" class="form-control" id="razon_social" placeholder="Ingresa la razon social" name="razon_social">
+  <label for="razon_social">Razon Social</label>
+  <input
+    type="text"
+    class="form-control"
+    id="razon_social"
+    placeholder="Ingresa la razon social"
+    name="razon_social"
+  />
 </div>
 <div class="form-group">
-    <label for="representante">Nombre Representante Legal</label>
-    <input type="text" class="form-control" id="representante" placeholder="Ingresa el nombre del representante legal" name="representante">
+  <label for="representante">Nombre Representante Legal</label>
+  <input
+    type="text"
+    class="form-control"
+    id="representante"
+    placeholder="Ingresa el nombre del representante legal"
+    name="representante"
+  />
 </div>
+
+<div class="container" style="padding: 10px 40px; width: inherit;">
+  <div class="row">
+    <div class="col-sm-6">
+      <label for="rfc">RFC</label>
+      <input
+        type="text"
+        class="form-control"
+        id="rfc"
+        placeholder="Ingresa el RFC"
+        name="rfc"
+      />
+    </div>
+    <div class="col-sm-6">
+      <label for="correo">Correo</label>
+      <input
+        type="email"
+        class="form-control"
+        id="correo"
+        placeholder="Ingresa el correo"
+        name="correo"
+      />
+    </div>
+  </div>
+</div>
+
 <div class="form-group">
-    <label for="rfc">RFC</label>
-    <input type="text" class="form-control" id="rfc" placeholder="Ingresa el RFC" name="rfc">
+  <label for="direccion">Direccion</label>
+  <input
+    type="text"
+    class="form-control"
+    id="direccion"
+    name="direccion"
+    placeholder="Ingresa la direccion"
+  />
 </div>
+
 <div class="form-group">
-    <label for="correo">Correo</label>
-    <input type="email" class="form-control" id="correo" placeholder="Ingresa el correo" name="correo">
+  <label for="cruza">Cruza con:</label>
 </div>
+
 <div class="form-group">
-    <label for="direccion">Direccion</label>
-    <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Ingresa la direccion">
+  <label for="calle_1">Calle 1</label>
+  <input
+    type="text"
+    class="form-control"
+    id="calle_1"
+    name="calle_1"
+    placeholder="Ingresa la calle 1"
+  />
 </div>
 
-<h2 style="text-align: center;">Giro</h2>
-<hr>
-<div class="form-group" onclick="hideIfSelected('otros',false,'isOtro',['otro_giro']);">
-    <label for="giro">Selecciona el giro de la empresa</label><br>
+<div class="form-group">
+  <label for="calle_2">Calle 2</label>
+  <input
+    type="text"
+    class="form-control"
+    id="calle_2"
+    name="calle_2"
+    placeholder="Ingresa la calle 2"
+  />
+</div>
 
-    <div class="input-group">
-        <span class="input-group-addon">
-            <input type="radio" id="espectaculos" name="giro" value="espectaculos">
-        </span>
-        <label class="form-control" for="espectaculos">Industrias de la Transformacion</label><br>
-    </div>
-    
-    <div class="input-group">
-        <span class="input-group-addon">
-            <input type="radio" id="comercio" name="giro" value="comercio">
-        </span>
-        <label class="form-control" for="comercio">Comercio</label><br>
-    </div>
+<div class="form-group">
+  <label for="colonia">Colonia</label>
+  <input
+    type="text"
+    class="form-control"
+    id="colonia"
+    name="colonia"
+    placeholder="Ingresa la colonia"
+  />
+</div>
 
-    <div class="input-group">
-        <span class="input-group-addon">
-            <input type="radio" id="servicios" name="giro" value="servicios">
-        </span>
-        <label class="form-control" for="servicios">Servicios para Empresas, Personas y el Hogar</label><br>
-    </div>
+<div class="form-group">
+  <label for="colonia">Municipio</label>
+  <input
+    type="text"
+    class="form-control"
+    id="municipio"
+    name="municipio"
+    placeholder="Ingresa el municipio"
+  />
+</div>
 
-    <div class="input-group">
-        <span class="input-group-addon">
-            <input type="radio" id="construccion" name="giro" value="construccion">
-        </span>
-        <label class="form-control" for="construccion">Industria de la Construccion</label><br>
-    </div>
+<div class="form-group">
+  <label for="codigo_postal">Codigo Postal</label>
+  <input
+    type="text"
+    class="form-control"
+    id="codigo_postal"
+    name="codigo_postal"
+    placeholder="Ingresa el codigo postal"
+  />
+</div>
 
-    <div class="input-group">
-        <span class="input-group-addon">
-            <input type="radio" id="transportes" name="giro" value="transportes">
-        </span>
-        <label class="form-control" for="transportes">Transportes y Comunicaciones</label><br>
-    </div>
+<h2>Giro</h2>
+<hr />
+<div
+  class="form-group"
+  onclick="hideIfSelected('otros',false,'isOtro',['otro_giro']);"
+>
+  <label for="giro">Selecciona el giro de la empresa</label><br />
 
-    <div class="input-group">
-        <span class="input-group-addon">
-            <input type="radio" id="comunales" name="giro" value="comunales">
-        </span>
-        <label class="form-control" for="comunales">Servicios Sociales y Comunales</label><br>
-    </div>
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input
+        type="radio"
+        id="transformacion"
+        name="giro"
+        value="transformacion"
+      />
+    </span>
+    <label class="form-control" for="transformacion"
+      >Industrias de la Transformacion</label
+    ><br />
+  </div>
 
-    <div class="input-group">
-        <span class="input-group-addon">
-            <input type="radio" id="agricultura" name="giro" value="agricultura">
-        </span>
-        <label class="form-control" for="agricultura">Agricultura, Ganaderia, Silvicultura, Pesca y Caza</label><br>
-    </div>
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="radio" id="comercio" name="giro" value="comercio" />
+    </span>
+    <label class="form-control" for="comercio">Comercio</label><br />
+  </div>
 
-    <div class="input-group">
-        <span class="input-group-addon">
-            <input type="radio" id="extractivas" name="giro" value="extractivas">
-        </span>
-        <label class="form-control" for="extractivas">Industrias Extractivas</label><br>
-    </div>
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="radio" id="servicios" name="giro" value="servicios" />
+    </span>
+    <label class="form-control" for="servicios"
+      >Servicios para Empresas, Personas y el Hogar</label
+    ><br />
+  </div>
 
-    <div class="input-group">
-        <span class="input-group-addon">
-            <input type="radio" id="electrica" name="giro" value="electrica">
-        </span>
-        <label class="form-control" for="electrica">Industria Electrica y Captacion y Suministro de agua potable</label><br>
-    </div>
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="radio" id="construccion" name="giro" value="construccion" />
+    </span>
+    <label class="form-control" for="construccion"
+      >Industria de la Construccion</label
+    ><br />
+  </div>
 
-    <div class="input-group">
-        <span class="input-group-addon">
-            <input type="radio" id="otros" name="giro" value="otros">
-        </span>
-        <label class="form-control" for="otros">Otros</label><br>
-    </div>
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="radio" id="transportes" name="giro" value="transportes" />
+    </span>
+    <label class="form-control" for="transportes"
+      >Transportes y Comunicaciones</label
+    ><br />
+  </div>
 
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="radio" id="comunales" name="giro" value="comunales" />
+    </span>
+    <label class="form-control" for="comunales"
+      >Servicios Sociales y Comunales</label
+    ><br />
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="radio" id="agricultura" name="giro" value="agricultura" />
+    </span>
+    <label class="form-control" for="agricultura"
+      >Agricultura, Ganaderia, Silvicultura, Pesca y Caza</label
+    ><br />
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="radio" id="extractivas" name="giro" value="extractivas" />
+    </span>
+    <label class="form-control" for="extractivas">Industrias Extractivas</label
+    ><br />
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="radio" id="electrica" name="giro" value="electrica" />
+    </span>
+    <label class="form-control" for="electrica"
+      >Industria Electrica y Captacion y Suministro de agua potable</label
+    ><br />
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="radio" id="otros" name="giro" value="otros" />
+    </span>
+    <label class="form-control" for="otros">Otros</label><br />
+  </div>
 </div>
 <div class="form-group" id="isOtro" style="display: none;">
-    <label for="giro">Escriba el giro de su empresa?</label><br>
-    <input type="text" class="form-control" id="otro_giro" name="otro_giro" placeholder="">
-
+  <label for="giro">Escriba el giro de su empresa?</label><br />
+  <input
+    type="text"
+    class="form-control"
+    id="otro_giro"
+    name="otro_giro"
+    placeholder=""
+  />
 </div>
 
-<h2 style="text-align: center;">Trabajadores</h2>
-<hr>
+<h2>Trabajadores</h2>
+<hr />
 <div class="form-group">
-    <label for="trabajadores_masculinos">Numero de trabajadores Masculinos</label>
-    <input type="number" class="form-control" id="trabajadores_masculinos" name="trabajadores_masculinos" placeholder="En caso de NO tener poner 0">
+  <label for="trabajadores_masculinos">Numero de trabajadores Masculinos</label>
+  <input
+    type="number"
+    class="form-control"
+    id="trabajadores_masculinos"
+    name="trabajadores_masculinos"
+    placeholder="En caso de NO tener poner 0"
+  />
 </div>
 <div class="form-group">
-    <label for="trabajadores_femeninos">Numero de trabajadores Femeninos</label>
-    <input type="number" class="form-control" id="trabajadores_femeninos" name="trabajadores_femeninos" placeholder="En caso de NO tener poner 0">
+  <label for="trabajadores_femeninos">Numero de trabajadores Femeninos</label>
+  <input
+    type="number"
+    class="form-control"
+    id="trabajadores_femeninos"
+    name="trabajadores_femeninos"
+    placeholder="En caso de NO tener poner 0"
+  />
 </div>
 <div class="form-group">
-    <label for="">Rango de edad</label>
-    <select class="form-control" name="rango_edad" id="edad">
-        <option value="1">15-19</option>
-        <option value="2">20-24</option>
-        <option value="3">25-29</option>
-        <option value="4">30-34</option>
-        <option value="5">35-39</option>
-        <option value="6">40-44</option>
-        <option value="7">45-49</option>
-        <option value="8">50-54</option>
-        <option value="9">55-59</option>
-        <option value="10">60-64</option>
-        <option value="11">65-69</option>
-    </select>
+  <label for="">Rango de edad</label>
+  <select class="form-control" name="rango_edad" id="edad">
+    <option value="1">15-19</option>
+    <option value="2">20-24</option>
+    <option value="3">25-29</option>
+    <option value="4">30-34</option>
+    <option value="5">35-39</option>
+    <option value="6">40-44</option>
+    <option value="7">45-49</option>
+    <option value="8">50-54</option>
+    <option value="9">55-59</option>
+    <option value="10">60-64</option>
+    <option value="11">65-69</option>
+  </select>
 </div>
 
-<h2>Detalles</h2>
+<h2>Información del Inmueble</h2>
+<hr />
 <div class="form-group">
-    <label for="">Tipo de zona</label>
-    <input type="text" class="form-control" id="" name="" placeholder="">
+  <label for="mtrs">Metros cuadrados de construcción</label>
+  <input
+    type="number"
+    class="form-control"
+    id="mtrs"
+    name="mtrs"
+    placeholder="Ingrese el valor en metros cuadrados"
+  />
+</div>
+
+<div class="form-group">
+  <label for="niveles">Niveles</label>
+  <input
+    type="number"
+    class="form-control"
+    id="niveles"
+    name="niveles"
+    placeholder="Ingrese los niveles del establecimiento"
+  />
+</div>
+
+<div class="form-group">
+  <label for="aforo">Aforo</label>
+  <input
+    type="number"
+    class="form-control"
+    id="aforo"
+    name="aforo"
+    placeholder="Ingrese el aforo del establecimiento"
+  />
+</div>
+
+<div
+  class="form-group"
+  onclick="hideIfSelected('otros',false,'isOtro',['otro_giro']);"
+>
+  <label for="#">Dispositivos de Seguridad</label><br />
+
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="checkbox" id="#" name="dispositivo" value="#" />
+    </span>
+    <label class="form-control" for="#">Sistema de Alarma</label><br />
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="checkbox" id="#" name="dispositivo" value="#" />
+    </span>
+    <label class="form-control" for="#">Extintores</label><br />
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="checkbox" id="#" name="dispositivo" value="#" />
+    </span>
+    <label class="form-control" for="#">Sensores de Gas</label><br />
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="checkbox" id="#" name="dispositivo" value="#" />
+    </span>
+    <label class="form-control" for="#">Sensores de Humo</label><br />
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="checkbox" id="#" name="dispositivo" value="#" />
+    </span>
+    <label class="form-control" for="#">Sensores de Humedad</label><br />
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="checkbox" id="#" name="dispositivo" value="#" />
+    </span>
+    <label class="form-control" for="#">Protección Personal</label><br />
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="checkbox" id="#" name="dispositivo" value="#" />
+    </span>
+    <label class="form-control" for="#">Interruptores</label><br />
+  </div>
+</div>
+
+<div
+  class="form-group"
+  onclick="hideIfSelected('otros',false,'isOtro',['otro_giro']);"
+>
+  <label for="#">Tipos de señalamientos</label><br />
+
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="checkbox" id="#" name="senal" value="#" />
+    </span>
+    <label class="form-control" for="#">Señales de prohibicion</label><br />
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="checkbox" id="#" name="senal" value="#" />
+    </span>
+    <label class="form-control" for="#"
+      >Señales de obligación para la seguridad de tus trabajadores</label
+    ><br />
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="checkbox" id="#" name="senal" value="#" />
+    </span>
+    <label class="form-control" for="#"
+      >Señales de advertencia en tus instalaciones</label
+    ><br />
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="checkbox" id="#" name="senal" value="#" />
+    </span>
+    <label class="form-control" for="#"
+      >Señales de auxilio necesarias en el lugar de trabajo</label
+    ><br />
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="checkbox" id="#" name="senal" value="#" />
+    </span>
+    <label class="form-control" for="#"
+      >Señales de equipos contra incendios</label
+    ><br />
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="checkbox" id="#" name="senal" value="#" />
+    </span>
+    <label class="form-control" for="#">Señales luminosas</label><br />
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="checkbox" id="#" name="senal" value="#" />
+    </span>
+    <label class="form-control" for="#">Señales acústicas</label><br />
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="checkbox" id="#" name="senal" value="#" />
+    </span>
+    <label class="form-control" for="#">Señales balizamiento</label><br />
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="#">Medidas de seguridad</label>
+  <input type="text" class="form-control" id="#" name="#" placeholder="#" />
+</div>
+
+<div class="form-group">
+  <label for="#">Material</label>
+  <input type="text" class="form-control" id="#" name="#" placeholder="#" />
 </div>
 
 <style>
-    hr {
-        border: 0; 
-        height: 1px;
-        background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
-    }
-    h2 {
-        font-family: 'Product Sans';
-    }
+  hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0.75),
+      rgba(0, 0, 0, 0)
+    );
+  }
+  .input-group-addon {
+    border-radius: 30px;
+  }
+  .form-group {
+    padding: 10px 40px;
+    margin: 0 auto;
+    font-size: 14px;
+    border-radius: 30px;
+  }
+  .form-control {
+    margin: 0 auto;
+    border-radius: 60px;
+    border: 1px solid #c4c4c2;
+  }
+  .form-inline {
+    padding: 10px 40px;
+    margin: 0 auto;
+    font-size: 14px;
+    border: 1px solid #ffffff;
+  }
+  label {
+    margin-left: 12px;
+  }
+  h2 {
+    text-align: center;
+  }
 </style>
