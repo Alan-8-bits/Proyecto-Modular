@@ -1,3 +1,46 @@
+<style>
+  hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0.75),
+      rgba(0, 0, 0, 0)
+    );
+  }
+  .input-group-addon {
+    border-radius: 30px;
+  }
+  .form-group {
+    padding: 10px 40px;
+    margin: 0 auto;
+    font-size: 14px;
+    border-radius: 30px;
+  }
+  .form-group label.form-control {
+    margin: 0 auto;
+    border-radius: 0px 30px 30px 0px !important;
+    border: 1px solid #c4c4c2;
+  }
+  .form-control {
+    margin: 0 auto;
+    border-radius: 60px;
+    border: 1px solid #c4c4c2;
+  }
+  .form-inline {
+    padding: 10px 40px;
+    margin: 0 auto;
+    font-size: 14px;
+    border: 1px solid #ffffff;
+  }
+  label {
+    margin-left: 12px;
+  }
+  h2 {
+    text-align: center;
+  }
+</style>
 <h2>
   Datos Generales
 </h2>
@@ -235,6 +278,7 @@
   <label for="trabajadores_masculinos">Numero de trabajadores Masculinos</label>
   <input
     type="number"
+    min="0"
     class="form-control"
     id="trabajadores_masculinos"
     name="trabajadores_masculinos"
@@ -245,6 +289,7 @@
   <label for="trabajadores_femeninos">Numero de trabajadores Femeninos</label>
   <input
     type="number"
+    min="0"
     class="form-control"
     id="trabajadores_femeninos"
     name="trabajadores_femeninos"
@@ -274,6 +319,7 @@
   <label for="mtrs">Metros cuadrados de construcción</label>
   <input
     type="number"
+    min="0"
     class="form-control"
     id="mtrs"
     name="mtrs"
@@ -285,6 +331,7 @@
   <label for="niveles">Niveles</label>
   <input
     type="number"
+    min="0"
     class="form-control"
     id="niveles"
     name="niveles"
@@ -296,6 +343,7 @@
   <label for="aforo">Aforo</label>
   <input
     type="number"
+    min="0"
     class="form-control"
     id="aforo"
     name="aforo"
@@ -435,42 +483,3 @@
   <label for="#">Material</label>
   <input type="text" class="form-control" id="#" name="#" placeholder="#" />
 </div>
-
-<style>
-  hr {
-    border: 0;
-    height: 1px;
-    background-image: linear-gradient(
-      to right,
-      rgba(0, 0, 0, 0),
-      rgba(0, 0, 0, 0.75),
-      rgba(0, 0, 0, 0)
-    );
-  }
-  .input-group-addon {
-    border-radius: 30px;
-  }
-  .form-group {
-    padding: 10px 40px;
-    margin: 0 auto;
-    font-size: 14px;
-    border-radius: 30px;
-  }
-  .form-control {
-    margin: 0 auto;
-    border-radius: 60px;
-    border: 1px solid #c4c4c2;
-  }
-  .form-inline {
-    padding: 10px 40px;
-    margin: 0 auto;
-    font-size: 14px;
-    border: 1px solid #ffffff;
-  }
-  label {
-    margin-left: 12px;
-  }
-  h2 {
-    text-align: center;
-  }
-</style>

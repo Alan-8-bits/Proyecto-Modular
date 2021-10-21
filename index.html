@@ -8,7 +8,12 @@
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
     />
-
+    <link
+      rel="stylesheet"
+      media="screen"
+      href="https://fontlibrary.org//face/nimbus-sans-l"
+      type="text/css"
+    />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
       $(document).ready(function () {
@@ -19,7 +24,7 @@
 
     <link rel="shortcut icon" href="#" />
   </head>
-  <body>
+  <body style="font-family: 'NimbusSanLRegular';">
     <div class="container">
       <h1 style="text-align: center;">EVALR</h1>
     </div>
@@ -199,8 +204,24 @@
             placeholder="Ingresa el id de la empresa"
           />
         </div>
-        <button type="submit" btn btn-primary">Enviar</button>
+        <button type="submit" class="btn btn-primary">
+          Enviar
+        </button>
       </form>
     </div>
   </body>
 </html>
+<style>
+  .btn-primary {
+    border-radius: 30px;
+    background-color: dimgray;
+    border-color: inherit;
+    color: white;
+    text-transform: uppercase;
+  }
+  .btn-primary:hover {
+    background-color: rgb(0, 129, 0) !important;
+    text-shadow: lightgrey;
+    border-color: dimgray;
+  }
+</style>
