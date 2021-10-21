@@ -14,25 +14,48 @@
       href="https://fontlibrary.org//face/nimbus-sans-l"
       type="text/css"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Roboto:wght@500&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
       $(document).ready(function () {
         $("#datos_generales_form").load("/datos-generales");
         $("#giro_form").load("/giro");
+        $("#trabajadores_form").load("/trabajadores");
+        $("#inmueble_form").load("/inmueble");
       });
     </script>
 
     <link rel="shortcut icon" href="#" />
   </head>
-  <body style="font-family: 'NimbusSanLRegular';">
-    <div class="container">
-      <h1 style="text-align: center;">EVALR</h1>
+  <body style="font-family: 'Lato';">
+    <div class="container" style="padding: 20px;">
+      <div class="row">
+        <div class="col-sm-2" style="text-align: left;" id="img_logo">
+          <img src="/img/logo" width="100" height="100" />
+        </div>
+        <div class="col-sm-6" style="text-align: left;">
+          <h1 style="font-family: 'Roboto'; font-weight: 570; color: #888886;">
+            EVALR ⛑️
+          </h1>
+          <h4 style="font-family: 'Roboto'; color: #888886; margin-top: -5px;">
+            Evaluacion de Riesgos CUCEI
+          </h4>
+        </div>
+      </div>
     </div>
 
     <div class="container">
       <form action="/api/empresas/" method="POST">
+        <link href="/form_styles" rel="stylesheet" />
         <div id="datos_generales_form"></div>
-        <!-- <div id="giro_form"></div> -->
+        <div id="giro_form"></div>
+        <div id="trabajadores_form"></div>
+        <div id="inmueble_form"></div>
 
         <div style="text-align: center;">
           <button type="submit" class="btn btn-primary">
@@ -218,10 +241,23 @@
     border-color: inherit;
     color: white;
     text-transform: uppercase;
+    font-size: 20px;
   }
   .btn-primary:hover {
-    background-color: rgb(0, 129, 0) !important;
+    background-color: rgb(4, 163, 4) !important;
     text-shadow: lightgrey;
     border-color: dimgray;
+  }
+  #img_logo {
+    border-right: 2px solid #b1b1b1;
+    border-image: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0),
+        rgba(0, 0, 0, 0.75),
+        rgba(0, 0, 0, 0)
+      )
+      1;
+    border-bottom: 0;
+    height: 100px;
   }
 </style>

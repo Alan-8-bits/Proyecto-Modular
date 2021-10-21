@@ -1,75 +1,108 @@
-<h1>Riesgo Externo</h1>
-<h2>Tipos de riesgo</h2>
+<h2>Giro</h2>
+<hr />
+<div
+  class="form-group"
+  onclick="hideIfSelected('otros',false,'isOtro',['otro_giro']);"
+>
+  <label for="giro">Selecciona el giro de la empresa</label><br />
 
-<div class="form-group" id="tipo_riesgo">
-    <label for="tipo_riesgo">Seleccionar una o varias opciones si en un radio de 50 metros se encuentra alguno de los siguientes</label><br>
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input
+        type="radio"
+        id="transformacion"
+        name="giro"
+        value="transformacion"
+      />
+    </span>
+    <label class="form-control" for="transformacion"
+      >Industrias de la Transformacion</label
+    ><br />
+  </div>
 
-    <div class="input-group">
-        <span class="input-group-addon">
-            <input type="checkbox" id="rio_canal" name="tipo_riesgo" value="rio_canal">
-        </span>
-        <label class="form-control" for="rio_canal">Rio o Canal</label><br>
-    </div>
-    
-    <div class="input-group">
-        <span class="input-group-addon">
-            <input type="checkbox" id="ladera" name="tipo_riesgo" value="ladera">
-        </span>
-        <label class="form-control" for="ladera">Ladera</label><br>
-    </div>
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="radio" id="comercio" name="giro" value="comercio" />
+    </span>
+    <label class="form-control" for="comercio">Comercio</label><br />
+  </div>
 
-    <div class="input-group">
-        <span class="input-group-addon">
-            <input type="checkbox" id="estacion_servicio" name="tipo_riesgo" value="estacion_servicio">
-        </span>
-        <label class="form-control" for="estacion_servicio">Estacion de servicio</label><br>
-    </div>
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="radio" id="servicios" name="giro" value="servicios" />
+    </span>
+    <label class="form-control" for="servicios"
+      >Servicios para Empresas, Personas y el Hogar</label
+    ><br />
+  </div>
 
-    <div class="input-group">
-        <span class="input-group-addon">
-            <input type="checkbox" id="estacion_carburacion" name="tipo_riesgo" value="estacion_carburacion">
-        </span>
-        <label class="form-control" for="estacion_carburacion">Estacion de carburacion</label><br>
-    </div>
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="radio" id="construccion" name="giro" value="construccion" />
+    </span>
+    <label class="form-control" for="construccion"
+      >Industria de la Construccion</label
+    ><br />
+  </div>
 
-    <div class="input-group">
-        <span class="input-group-addon">
-            <input type="checkbox" id="fabrica" name="tipo_riesgo" value="fabrica">
-        </span>
-        <label class="form-control" for="fabrica">Fabrica</label><br>
-    </div>
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="radio" id="transportes" name="giro" value="transportes" />
+    </span>
+    <label class="form-control" for="transportes"
+      >Transportes y Comunicaciones</label
+    ><br />
+  </div>
 
-    <div class="input-group">
-        <span class="input-group-addon">
-            <input type="checkbox" id="ninguna" name="tipo_riesgo" value="ninguna">
-        </span>
-        <label class="form-control" for="ninguna">Ninguna</label><br>
-    </div>
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="radio" id="comunales" name="giro" value="comunales" />
+    </span>
+    <label class="form-control" for="comunales"
+      >Servicios Sociales y Comunales</label
+    ><br />
+  </div>
 
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="radio" id="agricultura" name="giro" value="agricultura" />
+    </span>
+    <label class="form-control" for="agricultura"
+      >Agricultura, Ganaderia, Silvicultura, Pesca y Caza</label
+    ><br />
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="radio" id="extractivas" name="giro" value="extractivas" />
+    </span>
+    <label class="form-control" for="extractivas">Industrias Extractivas</label
+    ><br />
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="radio" id="electrica" name="giro" value="electrica" />
+    </span>
+    <label class="form-control" for="electrica"
+      >Industria Electrica y Captacion y Suministro de agua potable</label
+    ><br />
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="radio" id="otros" name="giro" value="otros" />
+    </span>
+    <label class="form-control" for="otros">Otros</label><br />
+  </div>
 </div>
-
-<div class="form-group" id="isNinguna" style="display: block;">
-    <h2>Distancia</h2>
-    <label for="metros_riesgo">Distancia que existe a la opción seleccionada (en metros)</label>
-    <input type="number" class="form-control" id="metros_riesgo" name="metros_riesgo" placeholder="Ingresa la distancia en metros">
+<div class="form-group" id="isOtro" style="display: none;">
+  <label for="giro">Escriba el giro de su empresa?</label><br />
+  <input
+    type="text"
+    class="form-control"
+    id="otro_giro"
+    name="otro_giro"
+    placeholder=""
+  />
 </div>
-
-<script>
-    document.getElementById('tipo_riesgo').addEventListener('change', (event) => {
-        ningunaSelected(event.target);
-        hideIfSelected('ninguna',true,'isNinguna',['metros_riesgo']);
-    });
-
-    function ningunaSelected(input){
-        if(input.id == "ninguna"){
-            document.getElementById("rio_canal").checked = false;
-            document.getElementById("ladera").checked = false;
-            document.getElementById("estacion_servicio").checked = false;
-            document.getElementById("estacion_carburacion").checked = false;
-            document.getElementById("fabrica").checked = false;
-        }
-        else{
-            document.getElementById("ninguna").checked = false;
-        }
-    }
-</script>
