@@ -12,7 +12,7 @@ module.exports = (app) => {
   // // Retrieve all Empresa Formularios
   router.get("/empresas/:id/formularios/", empresaController.findAllForms);
   // // Retrieve all Empresa Inspecciones
-  router.get("/empresas/:id/inspecciones/", empresaController.findAllForms);
+  router.get("/empresas/:id/inspecciones/", empresaController.findAllInspections);
   // // Retrieve a single Empresa with id
   router.get("/empresas/:id", empresaController.findOne);
   // // Update a Empresa with id

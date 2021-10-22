@@ -23,8 +23,15 @@ module.exports = (sequelize, DataTypes) => {
   };
   empresa.init({
     nombre: DataTypes.STRING,
+    razon_social: DataTypes.STRING,
+    nombre_rep_legal: DataTypes.STRING,
+    rfc: DataTypes.STRING,
     correo: DataTypes.STRING,
     direccion: DataTypes.STRING,
+    colonia: DataTypes.STRING,
+    codigo_postal: DataTypes.INTEGER,
+    calle_1: DataTypes.STRING,
+    calle_2: DataTypes.STRING,
     giro: DataTypes.STRING,
   }, {
     sequelize,

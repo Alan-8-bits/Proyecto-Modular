@@ -5,8 +5,9 @@ const Inspeccion = db.inspeccion;
 const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
+  console.log(req.body.giro);
   // Validate request
-  if (!req.body.nombre) {
+  if (!req.body.rfc) {
     res.status(400).send({
       message: "¡El contenido no puede estar vacío!"
     });
@@ -16,9 +17,16 @@ exports.create = (req, res) => {
   // Create a Empresa
   const empresa = {
       nombre: req.body.nombre,
+      razon_social: req.body.razon_social,
+      nombre_rep_legal: req.body.nombre_rep_legal,
+      rfc: req.body.rfc,
       correo: req.body.correo,
       direccion: req.body.direccion,
-      giro: req.body.giro,
+      colonia: req.body.colonia,
+      codigo_postal: req.body.codigo_postal,
+      calle_1: req.body.calle_1,
+      calle_2: req.body.calle_2,
+      giro: req.body.giro ? req.body.giro : req.body.otro_giro,
   };
 
   // Save Empresa in the database
@@ -141,7 +149,7 @@ exports.findAllForms = (req, res) => {
     });
 };
 
-exports.findAllForms = (req, res) => {
+exports.findAllInspections = (req, res) => {
   Inspeccion.findAll({ where: { empresa_id: req.params.id } })
     .then(data => {
       res.send(data);

@@ -11,10 +11,31 @@ module.exports = {
       nombre: {
         type: Sequelize.STRING
       },
+      razon_social: {
+        type: Sequelize.STRING
+      },
+      nombre_rep_legal: {
+        type: Sequelize.STRING
+      },
+      rfc: {
+        type: Sequelize.STRING
+      },
       correo: {
         type: Sequelize.STRING
       },
       direccion: {
+        type: Sequelize.STRING
+      },
+      colonia: {
+        type: Sequelize.STRING
+      },
+      codigo_postal: {
+        type: Sequelize.INTEGER
+      },
+      calle_1: {
+        type: Sequelize.STRING
+      },
+      calle_2: {
         type: Sequelize.STRING
       },
       giro: {
