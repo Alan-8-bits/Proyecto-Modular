@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class empresa extends Model {
     /**
@@ -12,30 +10,32 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       this.hasOne(models.formulario, {
-        foreignKey: 'empresa_id',
+        foreignKey: "empresa_id",
         allowNull: false
       });
       this.hasMany(models.inspeccion, {
-        foreignKey: 'empresa_id',
+        foreignKey: "empresa_id",
         allowNull: false
       });
     }
-  };
-  empresa.init({
-    nombre: DataTypes.STRING,
-    razon_social: DataTypes.STRING,
-    nombre_rep_legal: DataTypes.STRING,
-    rfc: DataTypes.STRING,
-    correo: DataTypes.STRING,
-    direccion: DataTypes.STRING,
-    colonia: DataTypes.STRING,
-    codigo_postal: DataTypes.INTEGER,
-    calle_1: DataTypes.STRING,
-    calle_2: DataTypes.STRING,
-    giro: DataTypes.STRING,
-  }, {
-    sequelize,
-    modelName: 'empresa',
-  });
+  }
+  empresa.init(
+    {
+      razon_social: DataTypes.STRING,
+      nombre_rep_legal: DataTypes.STRING,
+      rfc: DataTypes.STRING,
+      correo: DataTypes.STRING,
+      direccion: DataTypes.STRING,
+      colonia: DataTypes.STRING,
+      codigo_postal: DataTypes.INTEGER,
+      calle_1: DataTypes.STRING,
+      calle_2: DataTypes.STRING,
+      giro: DataTypes.STRING
+    },
+    {
+      sequelize,
+      modelName: "empresa"
+    }
+  );
   return empresa;
 };

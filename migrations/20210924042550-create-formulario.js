@@ -1,31 +1,52 @@
-'use strict';
+"use strict";
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('formularios', {
+    await queryInterface.createTable("formularios", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      respuestas: {
-        type: Sequelize.STRING
-      },
       empresa_id: {
         type: Sequelize.INTEGER,
         references: {
           model: {
-            tableName: 'empresas'
+            tableName: "empresas"
           },
-          key: 'id'
+          key: "id"
         },
         allowNull: false
       },
-      respuesta_modelo_ML: {
+      trabajadores_masculinos: {
+        type: Sequelize.INTEGER
+      },
+      trabajadores_femeninos: {
+        type: Sequelize.INTEGER
+      },
+      rengo_edad: {
         type: Sequelize.STRING
       },
-      direccion_archivo: {
+      mtrs: {
+        type: Sequelize.INTEGER
+      },
+      niveles: {
+        type: Sequelize.INTEGER
+      },
+      aforo: {
+        type: Sequelize.INTEGER
+      },
+      dispositivo: {
+        type: Sequelize.TEXT("long")
+      },
+      senal: {
+        type: Sequelize.TEXT("long")
+      },
+      medidas: {
         type: Sequelize.STRING
+      },
+      material: {
+        type: Sequelize.TEXT("long")
       },
       createdAt: {
         allowNull: false,
@@ -38,6 +59,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('formularios');
+    await queryInterface.dropTable("formularios");
   }
 };

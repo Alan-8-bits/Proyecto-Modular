@@ -54,26 +54,34 @@
         <link href="/form_styles" rel="stylesheet" />
         <div id="datos_generales_form"></div>
         <div id="giro_form"></div>
-        <button type="submit" id="submit_btn_empresa" style="display: none;"></button>
+        <button
+          type="submit"
+          id="submit_btn_empresa"
+          style="display: none;"
+        ></button>
       </form>
 
-      <!-- <form action="/api/empresas/" method="POST" id="form_formulario"> -->
+      <form action="/api/formularios/" method="POST" id="form_formulario">
         <div id="trabajadores_form"></div>
         <div id="inmueble_form"></div>
-      <!-- </form> -->
+        <button
+          type="submit"
+          id="submit_btn_formulario"
+          style="display: none;"
+        ></button>
+      </form>
 
-        <div style="text-align: center;">
-          <button class="btn btn-primary" onclick="submitForms()">
-            Enviar
-          </button>
-        </div>
- 
+      <div style="text-align: center;">
+        <button class="btn btn-primary" onclick="submitForms()">
+          Enviar
+        </button>
+      </div>
     </div>
 
     <script>
-      function submitForms(){
-          document.getElementById("submit_btn_empresa").click();
-          // document.getElementById("form_formulario").submit();
+      function submitForms() {
+        document.getElementById("submit_btn_empresa").click();
+        document.getElementById("submit_btn_formulario").submit();
       }
 
       function hideIfSelected(toCheck, hide, toHide, toReset) {
