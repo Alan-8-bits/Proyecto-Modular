@@ -9,6 +9,7 @@
     id="mtrs"
     name="mtrs"
     placeholder="Ingrese el valor en metros cuadrados"
+    required
   />
 </div>
 
@@ -21,6 +22,7 @@
     id="niveles"
     name="niveles"
     placeholder="Ingrese los niveles del establecimiento"
+    required
   />
 </div>
 
@@ -33,6 +35,7 @@
     id="aforo"
     name="aforo"
     placeholder="Ingrese el aforo del establecimiento"
+    required
   />
 </div>
 
@@ -245,10 +248,13 @@
     type="text"
     class="form-control"
     id="medidas"
-    name="#"
+    name="medidas"
     placeholder="Ingresa las medidas de seguridad"
+    style="width: 80%;"
   />
-  <button type="button" onclick="newElement()" class="btn">Añadir</button>
+  <button type="button" onclick="newElement()" style="width: 19%;" class="btn">
+    Añadir
+  </button>
   <ul id="list"></ul>
 </div>
 
@@ -268,6 +274,123 @@
 </script>
 
 <div class="form-group">
-  <label for="#">Material</label>
-  <input type="text" class="form-control" id="#" name="#" placeholder="#" />
+  <label for="#">Recursos Materiales</label><br />
+
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="checkbox" id="#" name="material" value="#" />
+    </span>
+    <label class="form-control" for="#">Materia Prima</label><br />
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="checkbox" id="#" name="material" value="#" />
+    </span>
+    <label class="form-control" for="#">Maquinaria y/o Herramienta</label><br />
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="checkbox" id="#" name="material" value="#" />
+    </span>
+    <label class="form-control" for="#"
+      >Bienes muebles y objetos de oficina</label
+    ><br />
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="checkbox" id="#" name="material" value="#" />
+    </span>
+    <label class="form-control" for="#">Vehículos</label><br />
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="checkbox" id="#" name="material" value="#" />
+    </span>
+    <label class="form-control" for="#">Productos Químicos</label><br />
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="checkbox" id="#" name="material" value="#" />
+    </span>
+    <label class="form-control" for="#">Energía y Combustible</label><br />
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="#"
+    >¿Qué riesgos consideras que pudiera tener tu giro empresarial? </label
+  ><br />
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="checkbox" id="riesgo" name="riesgo" value="#" />
+    </span>
+    <label class="form-control" for="#"
+      >Métodos, materiales o procedimientos peligrosos</label
+    ><br />
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="checkbox" id="riesgo" name="riesgo" value="#" />
+    </span>
+    <label class="form-control" for="#">Defectos de los agentes</label><br />
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="checkbox" id="riesgo" name="riesgo" value="#" />
+    </span>
+    <label class="form-control" for="#">Peligros públicos</label><br />
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="checkbox" id="riesgo" name="riesgo" value="#" />
+    </span>
+    <label class="form-control" for="#">Peligros del medio ambiente</label
+    ><br />
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="checkbox" id="riesgo" name="riesgo" value="#" />
+    </span>
+    <label class="form-control" for="#">Peligros por la colocación</label><br />
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="checkbox" id="riesgo" name="riesgo" value="#" />
+    </span>
+    <label class="form-control" for="#"
+      >Peligros de indumentaria y vestido</label
+    ><br />
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="checkbox" id="riesgo" name="riesgo" value="#" />
+    </span>
+    <label class="form-control" for="#">Protegido inadecuadamente</label><br />
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="checkbox" id="riesgo" name="riesgo" value="#" />
+    </span>
+    <label class="form-control" for="#">Riesgo físico, s.c.e.</label><br />
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="checkbox" id="riesgo" name="riesgo" value="#" />
+    </span>
+    <label class="form-control" for="#">Otra clasificación</label><br />
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="checkbox" id="riesgo" name="riesgo" value="#" />
+    </span>
+    <label class="form-control" for="#">No especificado</label><br />
+  </div>
 </div>

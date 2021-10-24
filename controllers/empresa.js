@@ -14,30 +14,31 @@ exports.create = (req, res) => {
     return;
   }
 
+  var giro_form =
+    req.body.giro === "otros" ? req.body.otro_giro : req.body.giro;
+
   // Create a Empresa
   const empresa = {
-      nombre: req.body.nombre,
-      razon_social: req.body.razon_social,
-      nombre_rep_legal: req.body.nombre_rep_legal,
-      rfc: req.body.rfc,
-      correo: req.body.correo,
-      direccion: req.body.direccion,
-      colonia: req.body.colonia,
-      codigo_postal: req.body.codigo_postal,
-      calle_1: req.body.calle_1,
-      calle_2: req.body.calle_2,
-      giro: req.body.giro ? req.body.giro : req.body.otro_giro,
+    razon_social: req.body.razon_social,
+    nombre_rep_legal: req.body.nombre_rep_legal,
+    rfc: req.body.rfc,
+    correo: req.body.correo,
+    direccion: req.body.direccion,
+    colonia: req.body.colonia,
+    codigo_postal: req.body.codigo_postal,
+    calle_1: req.body.calle_1,
+    calle_2: req.body.calle_2,
+    giro: giro_form
   };
 
   // Save Empresa in the database
   Empresa.create(empresa)
-    .then(data => {
+    .then((data) => {
       res.send(data);
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send({
-        message:
-          err.message || "Se produjo un error al crear la empresa."
+        message: err.message || "Se produjo un error al crear la empresa."
       });
     });
 };
@@ -47,13 +48,12 @@ exports.findAll = (req, res) => {
   var condition = nombre ? { nombre: { [Op.like]: `%${nombre}%` } } : null;
 
   Empresa.findAll({ where: condition })
-    .then(data => {
+    .then((data) => {
       res.send(data);
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving empresas."
+        message: err.message || "Some error occurred while retrieving empresas."
       });
     });
 };
@@ -62,10 +62,10 @@ exports.findOne = (req, res) => {
   const id = req.params.id;
 
   Empresa.findByPk(id)
-    .then(data => {
+    .then((data) => {
       res.send(data);
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send({
         message: "Error retrieving Empresa with id=" + id
       });
@@ -78,7 +78,7 @@ exports.update = (req, res) => {
   Empresa.update(req.body, {
     where: { id: id }
   })
-    .then(num => {
+    .then((num) => {
       if (num == 1) {
         res.send({
           message: "Empresa was updated successfully."
@@ -89,7 +89,7 @@ exports.update = (req, res) => {
         });
       }
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send({
         message: "Error updating Empresa with id=" + id
       });
@@ -102,7 +102,7 @@ exports.delete = (req, res) => {
   Empresa.destroy({
     where: { id: id }
   })
-    .then(num => {
+    .then((num) => {
       if (num == 1) {
         res.send({
           message: "Empresa was deleted successfully!"
@@ -113,7 +113,7 @@ exports.delete = (req, res) => {
         });
       }
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send({
         message: "Could not delete Empresa with id=" + id
       });
@@ -125,10 +125,10 @@ exports.deleteAll = (req, res) => {
     where: {},
     truncate: false
   })
-    .then(nums => {
+    .then((nums) => {
       res.send({ message: `${nums} Tutorials were deleted successfully!` });
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send({
         message:
           err.message || "Some error occurred while removing all empresas."
@@ -138,10 +138,10 @@ exports.deleteAll = (req, res) => {
 
 exports.findAllForms = (req, res) => {
   Formulario.findAll({ where: { empresa_id: req.params.id } })
-    .then(data => {
+    .then((data) => {
       res.send(data);
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send({
         message:
           err.message || "Some error occurred while retrieving formularios."
@@ -151,10 +151,10 @@ exports.findAllForms = (req, res) => {
 
 exports.findAllInspections = (req, res) => {
   Inspeccion.findAll({ where: { empresa_id: req.params.id } })
-    .then(data => {
+    .then((data) => {
       res.send(data);
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send({
         message:
           err.message || "Some error occurred while retrieving inspecciones."

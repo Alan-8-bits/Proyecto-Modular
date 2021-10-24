@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class formulario extends Model {
     /**
@@ -12,18 +10,28 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       this.belongsTo(models.empresa, {
-        foreignKey: 'empresa_id',
+        foreignKey: "empresa_id",
         allowNull: false
       });
     }
-  };
-  formulario.init({
-    respuestas: DataTypes.STRING,
-    respuesta_modelo_ML: DataTypes.STRING,
-    direccion_archivo: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'formulario',
-  });
+  }
+  formulario.init(
+    {
+      trabajadores_masculinos: DataTypes.INTEGER,
+      trabajadores_femeninos: DataTypes.INTEGER,
+      rengo_edad: DataTypes.STRING,
+      mtrs: DataTypes.INTEGER,
+      niveles: DataTypes.INTEGER,
+      aforo: DataTypes.INTEGER,
+      dispositivo: DataTypes.TEXT("long"),
+      senal: DataTypes.TEXT("long"),
+      medidas: DataTypes.STRING,
+      material: DataTypes.TEXT("long")
+    },
+    {
+      sequelize,
+      modelName: "formulario"
+    }
+  );
   return formulario;
 };

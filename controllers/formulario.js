@@ -5,7 +5,7 @@ const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.respuestas) {
+  if (!req.body.trabajadores_masculinos) {
     res.status(400).send({
       message: "¡El contenido no puede estar vacío!"
     });
@@ -14,34 +14,41 @@ exports.create = (req, res) => {
 
   // Create a Formulario
   const formulario = {
-      respuestas: req.body.respuestas,
-      respuesta_modelo_ML: req.body.respuesta_modelo_ML,
-      direccion_archivo: req.body.direccion_archivo,
-      empresa_id: req.body.empresa_id,
+    trabajadores_masculinos: req.body.trabajadores_masculinos,
+    trabajadores_femeninos: req.body.trabajadores_femeninos,
+    rengo_edad: req.body.rengo_edad,
+    mtrs: req.body.mtrs,
+    niveles: req.body.niveles,
+    aforo: req.body.aforo,
+    dispositivo: req.body.dispositivo,
+    senal: req.body.senal,
+    medidas: req.body.medidas,
+    material: req.body.material
   };
 
   // Save Formulario in the database
   Formulario.create(formulario)
-    .then(data => {
+    .then((data) => {
       res.send(data);
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send({
-        message:
-          err.message || "Se produjo un error al crear formulario."
+        message: err.message || "Se produjo un error al crear formulario."
       });
     });
 };
 
 exports.findAll = (req, res) => {
   const empresa_id = req.query.empresa_id;
-  var condition = empresa_id ? { empresa_id: { [Op.like]: `%${empresa_id}%` } } : null;
+  var condition = empresa_id
+    ? { empresa_id: { [Op.like]: `%${empresa_id}%` } }
+    : null;
 
   Formulario.findAll({ where: condition })
-    .then(data => {
+    .then((data) => {
       res.send(data);
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send({
         message:
           err.message || "Some error occurred while retrieving formularios."
@@ -53,10 +60,10 @@ exports.findOne = (req, res) => {
   const id = req.params.id;
 
   Formulario.findByPk(id)
-    .then(data => {
+    .then((data) => {
       res.send(data);
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send({
         message: "Error retrieving Formulario with id=" + id
       });
@@ -69,7 +76,7 @@ exports.update = (req, res) => {
   Formulario.update(req.body, {
     where: { id: id }
   })
-    .then(num => {
+    .then((num) => {
       if (num == 1) {
         res.send({
           message: "Formulario was updated successfully."
@@ -80,7 +87,7 @@ exports.update = (req, res) => {
         });
       }
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send({
         message: "Error updating Formulario with id=" + id
       });
@@ -93,7 +100,7 @@ exports.delete = (req, res) => {
   Formulario.destroy({
     where: { id: id }
   })
-    .then(num => {
+    .then((num) => {
       if (num == 1) {
         res.send({
           message: "Formulario was deleted successfully!"
@@ -104,7 +111,7 @@ exports.delete = (req, res) => {
         });
       }
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send({
         message: "Could not delete Formulario with id=" + id
       });
@@ -116,10 +123,10 @@ exports.deleteAll = (req, res) => {
     where: {},
     truncate: false
   })
-    .then(nums => {
+    .then((nums) => {
       res.send({ message: `${nums} Formularios were deleted successfully!` });
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send({
         message:
           err.message || "Some error occurred while removing all formularios."
@@ -132,23 +139,22 @@ exports.findEmpresa = async (req, res) => {
   var empresa_id = 0;
 
   await Formulario.findByPk(id)
-    .then(data => {
+    .then((data) => {
       empresa_id = data.empresa_id;
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send({
         message: "Error retrieving Formulario with id=" + id
       });
     });
 
   Empresa.findByPk(empresa_id)
-    .then(data => {
+    .then((data) => {
       res.send(data);
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving Empresa."
+        message: err.message || "Some error occurred while retrieving Empresa."
       });
     });
 };
