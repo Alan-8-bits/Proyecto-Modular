@@ -5,7 +5,6 @@ const Inspeccion = db.inspeccion;
 const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
-  console.log(req.body.giro);
   // Validate request
   if (!req.body.rfc) {
     res.status(400).send({

@@ -50,40 +50,23 @@
     </div>
 
     <div class="container">
-      <form action="/api/empresas/" method="POST" id="form_empresa">
-        <link href="/form_styles" rel="stylesheet" />
+      <link href="/form_styles" rel="stylesheet" />
+
+      <form action="/submit-forms" method="POST" id="form_empresa">
         <div id="datos_generales_form"></div>
         <div id="giro_form"></div>
-        <button
-          type="submit"
-          id="submit_btn_empresa"
-          style="display: none;"
-        ></button>
-      </form>
-
-      <form action="/api/formularios/" method="POST" id="form_formulario">
         <div id="trabajadores_form"></div>
         <div id="inmueble_form"></div>
-        <button
-          type="submit"
-          id="submit_btn_formulario"
-          style="display: none;"
-        ></button>
+        <div style="text-align: center;">
+          <button class="btn btn-primary" type="submit">
+            Enviar
+          </button>
+        </div>
       </form>
-
-      <div style="text-align: center;">
-        <button class="btn btn-primary" onclick="submitForms()">
-          Enviar
-        </button>
-      </div>
+      
     </div>
 
     <script>
-      function submitForms() {
-        document.getElementById("submit_btn_empresa").click();
-        document.getElementById("submit_btn_formulario").submit();
-      }
-
       function hideIfSelected(toCheck, hide, toHide, toReset) {
         if (document.getElementById(toCheck).checked) {
           document.getElementById(toHide).style.display = hide

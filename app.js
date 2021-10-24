@@ -9,6 +9,7 @@ app.use(logger("dev"));
 // Parse incoming requests data (https://github.com/expressjs/body-parser)
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.set('view engine', 'ejs');
 
 require("./routes/index.js")(app);
 require("./routes/resources.js")(app, __dirname);

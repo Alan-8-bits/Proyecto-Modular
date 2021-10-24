@@ -26,7 +26,8 @@ module.exports = (sequelize, DataTypes) => {
       dispositivo: DataTypes.TEXT("long"),
       senal: DataTypes.TEXT("long"),
       medidas: DataTypes.STRING,
-      material: DataTypes.TEXT("long")
+      material: DataTypes.TEXT("long"),
+      riesgo: DataTypes.TEXT("long")
     },
     {
       sequelize,

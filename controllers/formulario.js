@@ -17,13 +17,19 @@ exports.create = (req, res) => {
     trabajadores_masculinos: req.body.trabajadores_masculinos,
     trabajadores_femeninos: req.body.trabajadores_femeninos,
     rengo_edad: req.body.rengo_edad,
+
     mtrs: req.body.mtrs,
     niveles: req.body.niveles,
     aforo: req.body.aforo,
-    dispositivo: req.body.dispositivo,
-    senal: req.body.senal,
-    medidas: req.body.medidas,
-    material: req.body.material
+
+    dispositivo: req.body.dispositivo ? req.body.dispositivo.toString() : '',
+    senal: req.body.senal ? req.body.senal.toString() : '',
+    medidas: req.body.medidas ? req.body.medidas.toString() : '',
+
+    material: req.body.material ? req.body.material.toString() : '',
+    riesgo: req.body.riesgo ? req.body.riesgo.toString() : 'no_especificado',
+
+    empresa_id: req.body.empresa_id,
   };
 
   // Save Formulario in the database

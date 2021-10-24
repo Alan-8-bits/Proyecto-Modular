@@ -48,6 +48,9 @@ module.exports = {
       material: {
         type: Sequelize.TEXT("long")
       },
+      riesgo: {
+        type: Sequelize.TEXT("long")
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
