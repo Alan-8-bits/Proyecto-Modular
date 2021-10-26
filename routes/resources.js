@@ -1,7 +1,7 @@
 const db = require("../models");
 const Empresa = db.empresa;
 const Formulario = db.formulario;
-let ejs = require('ejs');
+const Op = db.Sequelize.Op;
 
 module.exports = (app, root_dirname) => {
   app.get("/datos-generales", (req, res) => {
@@ -22,8 +22,18 @@ module.exports = (app, root_dirname) => {
   app.get("/img/logo", (req, res) => {
     res.sendFile(root_dirname + "/img/logo.png");
   });
-  app.get("/show-empresa", (req, res) => {
-    res.render(root_dirname + "/views/showEmpresa.html", {name:req.body});
+  app.post("/formOrAlreadySaved", async (req, res) => {
+    const rfc = req.body.rfc;
+    var condition = rfc ? { rfc: { [Op.eq]: rfc } } : null;
+    
+    var emp = await Empresa.findOne({ where: condition });
+
+    if (emp !== null) {
+      res.render("showEmpresa.html", {empresa: emp });
+    }
+    else{
+      res.sendFile(root_dirname + "/index.html");
+    }
   });
   app.post("/submit-forms", async (req, res) => {
 
@@ -85,6 +95,6 @@ module.exports = (app, root_dirname) => {
       });
     });
 
-    res.send("se guardo la empresa y el formulario");
+    res.render("showEmpresa.html", {empresa: emp });
   });
 };

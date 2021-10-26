@@ -9,14 +9,17 @@ app.use(logger("dev"));
 // Parse incoming requests data (https://github.com/expressjs/body-parser)
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.set('view engine', 'ejs');
+
+// app.use(express.static(__dirname));
+app.engine('html', require('ejs').renderFile);
+// app.set('view engine', 'ejs');
 
 require("./routes/index.js")(app);
 require("./routes/resources.js")(app, __dirname);
 
 // Setup a default catch-all route that sends back a welcome message in JSON format.
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/index.html");
+  res.sendFile(__dirname + "/views/login.html");
 });
 
 const port = parseInt(process.env.PORT, 10) || 8000;

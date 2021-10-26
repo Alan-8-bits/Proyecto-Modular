@@ -53,7 +53,7 @@
     </div>
     <div class="login" style="font-size: 16px; padding: 20px;">
       <form
-        action="/api/index/"
+        action="/formOrAlreadySaved"
         method="POST"
         id="form_empresa"
         style="margin-top: 20px;"
@@ -78,26 +78,22 @@
             class="form-control"
             id="rfc"
             placeholder="Ingresa el RFC"
-            name="RFC"
+            name="rfc"
             maxlength="13"
             style="height: 36px;"
             required
           />
         </div>
-        <button
-          type="submit"
-          id="submit_btn_empresa"
-          style="display: none;"
-        ></button>
+        <div style="text-align: center;">
+          <br />
+          <br />
+          <button type="submit" class="btn btn-primary">
+            Ingresar
+          </button>
+        </div>
       </form>
 
-      <div style="text-align: center;">
-        <br />
-        <br />
-        <button type="submit" class="btn btn-primary" onclick="submitForms()">
-          Ingresar
-        </button>
-      </div>
+      
     </div>
   </body>
 </html>

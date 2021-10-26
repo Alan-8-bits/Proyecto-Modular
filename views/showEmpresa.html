@@ -115,8 +115,6 @@
   </div>
 </div>
 
-<%= name %>
-
 <table class="table">
   <thead class="thead-dark">
     <tr>
@@ -130,9 +128,9 @@
   </thead>
   <tbody>
     <tr>
-      <td id="RFC"></td>
-      <td id="RazonSocial"></td>
-      <td id="Giro"></td>
+      <td id="RFC"><%= empresa.rfc %></td>
+      <td id="RazonSocial"><%= empresa.razon_social %></td>
+      <td id="Giro"><%= empresa.giro %></td>
       <td id="FechaInspeccion"></td>
       <td id="Estatus de Inspección"></td>
       <td id="PorcentajeRiesgo"></td>
@@ -140,7 +138,7 @@
   </tbody>
 </table>
 <div style="text-align: center; padding: 20px;">
-  <a href="index.html"
+  <a href="/">
   <button type="submit" class="btn btn-primary" onclick="irAIndice()">
     Regresar
   </button>
