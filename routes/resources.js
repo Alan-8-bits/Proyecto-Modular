@@ -2,6 +2,7 @@ const db = require("../models");
 const Empresa = db.empresa;
 const Formulario = db.formulario;
 const Op = db.Sequelize.Op;
+const axios = require('axios');
 
 module.exports = (app, root_dirname) => {
   app.get("/datos-generales", (req, res) => {
@@ -94,6 +95,24 @@ module.exports = (app, root_dirname) => {
         message: err.message || "Se produjo un error al crear formulario."
       });
     });
+
+    var json_request = {
+      "data": [
+        {
+          "Giro": giro_form,
+        }
+      ]
+    }
+
+    // axios request to send form data to the server
+    await axios.post(process.env.API_AZURE,json_request)
+    .then(function (response) {
+      emp.api = JSON.parse(response.data).result.toString();
+    })
+    .catch(function (error) {
+      // handle error
+      res.send(error);
+    })
 
     res.render("showEmpresa.html", {empresa: emp });
   });
