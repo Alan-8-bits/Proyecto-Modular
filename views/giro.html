@@ -1,114 +1,152 @@
-<h2>Giro</h2>
-<hr />
-<div
-  class="form-group"
-  onclick="hideIfSelected('otros',false,'isOtro',['otro_giro']);"
->
-  <label for="giro">Selecciona el giro de la empresa</label><br />
+<div class="row justify-content-center">
+  <div class="col-xl-7 col-lg-12 col-md-9 ">
+      <div class="card o-hidden border-0 shadow-lg my-5 mt-n5">
+          <div class="card-header py-3 text-center" style="background-color: #bf1e2e;">
+            <h4 class="m-0 text-white">Giro</h4>
+          </div>
+          <div class="card-body p-0">
+              <div class="row justify-content-center">
+                  <div class="col-lg-7 my-auto">
+                      <div class="p-5">
+                          <div class="text-center">
+                              <h1 class="h4 text-gray-900 mb-4">Selecciona el giro de la empresa</h1>
+                          </div>
 
-  <div class="input-group">
-    <span class="input-group-addon">
-      <input
-        type="radio"
-        id="transformacion"
-        name="giro"
-        value="transformacion"
-        required
-      />
-    </span>
-    <label class="form-control" for="transformacion"
-      >Industrias de la Transformacion</label
-    ><br />
-  </div>
+                          <div class="form-group" onclick="hideIfSelected('otros',false,'isOtro',['otro_giro']);">
 
-  <div class="input-group">
-    <span class="input-group-addon">
-      <input type="radio" id="comercio" name="giro" value="comercio" />
-    </span>
-    <label class="form-control" for="comercio">Comercio</label><br />
-  </div>
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <div class="input-group-text bg-gradient-danger">
+                                <input type="radio" id="transformacion" name="giro" value="transformacion" required/>
+                                </div>
+                              </div>
+                              <label class="form-control" for="transformacion">Industrias de la Transformacion</label>
+                            </div>
 
-  <div class="input-group">
-    <span class="input-group-addon">
-      <input
-        type="radio"
-        id="servicios"
-        name="giro"
-        value="servicios_empresas"
-      />
-    </span>
-    <label class="form-control" for="servicios"
-      >Servicios para Empresas, Personas y el Hogar</label
-    ><br />
-  </div>
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <div class="input-group-text bg-gradient-danger">
+                                  <input type="radio" id="comercio" name="giro" value="comercio" />
+                                </div>
+                              </div>
+                              <label class="form-control" for="comercio">Comercio</label>
+                            </div>
 
-  <div class="input-group">
-    <span class="input-group-addon">
-      <input type="radio" id="construccion" name="giro" value="construccion" />
-    </span>
-    <label class="form-control" for="construccion"
-      >Industria de la Construccion</label
-    ><br />
-  </div>
+                            <!-- radio input of Servicios para Empresas, Personas y el Hogar -->
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <div class="input-group-text bg-gradient-danger">
+                                  <input type="radio" id="servicios" name="giro" value="servicios_empresas" />
+                                </div>
+                              </div>
+                              <label class="form-control" for="servicios">Servicios para Empresas, Personas y el Hogar</label>
+                            </div>
 
-  <div class="input-group">
-    <span class="input-group-addon">
-      <input type="radio" id="transportes" name="giro" value="transportes" />
-    </span>
-    <label class="form-control" for="transportes"
-      >Transportes y Comunicaciones</label
-    ><br />
-  </div>
+                            <!-- radio input of Industria de la Construccion -->
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <div class="input-group-text bg-gradient-danger">
+                                  <input type="radio" id="construccion" name="giro" value="construccion" />
+                                </div>
+                              </div>
+                              <label class="form-control" for="construccion">Industria de la Construccion</label>
+                            </div>
 
-  <div class="input-group">
-    <span class="input-group-addon">
-      <input type="radio" id="comunales" name="giro" value="comunales" />
-    </span>
-    <label class="form-control" for="comunales"
-      >Servicios Sociales y Comunales</label
-    ><br />
-  </div>
+                            <!-- radio input of Transportes y Comunicaciones -->
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <div class="input-group-text bg-gradient-danger">
+                                  <input type="radio" id="transportes" name="giro" value="transportes" />
+                                </div>
+                              </div>
+                              <label class="form-control" for="transportes">Transportes y Comunicaciones</label>
+                            </div>
 
-  <div class="input-group">
-    <span class="input-group-addon">
-      <input type="radio" id="agricultura" name="giro" value="agricultura" />
-    </span>
-    <label class="form-control" for="agricultura"
-      >Agricultura, Ganaderia, Silvicultura, Pesca y Caza</label
-    ><br />
-  </div>
+                            <!-- radio input of Servicios Sociales y Comunales -->
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <div class="input-group-text bg-gradient-danger">
+                                  <input type="radio" id="comunales" name="giro" value="comunales" />
+                                </div>
+                              </div>
+                              <label class="form-control" for="comunales">Servicios Sociales y Comunales</label>
+                            </div>
 
-  <div class="input-group">
-    <span class="input-group-addon">
-      <input type="radio" id="extractivas" name="giro" value="extractivas" />
-    </span>
-    <label class="form-control" for="extractivas">Industrias Extractivas</label
-    ><br />
-  </div>
+                            <!-- radio input of Agricultura, Ganaderia, Silvicultura, Pesca y Caza -->
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <div class="input-group-text bg-gradient-danger">
+                                  <input type="radio" id="agricultura" name="giro" value="agricultura" />
+                                </div>
+                              </div>
+                              <label class="form-control" for="agricultura">Agricultura, Ganaderia, Silvicultura, Pesca y Caza</label>
+                            </div>
 
-  <div class="input-group">
-    <span class="input-group-addon">
-      <input type="radio" id="electrica" name="giro" value="electrica" />
-    </span>
-    <label class="form-control" for="electrica"
-      >Industria Electrica y Captacion y Suministro de agua potable</label
-    ><br />
-  </div>
+                            <!-- radio input of Industrias Extractivas -->
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <div class="input-group-text bg-gradient-danger">
+                                  <input type="radio" id="extractivas" name="giro" value="extractivas" />
+                                </div>
+                              </div>
+                              <label class="form-control" for="extractivas">Industrias Extractivas</label>
+                            </div>
 
-  <div class="input-group">
-    <span class="input-group-addon">
-      <input type="radio" id="otros" name="giro" value="otros" />
-    </span>
-    <label class="form-control" for="otros">Otros</label><br />
+                            <!-- radio input of Industria Electrica y Captacion y Suministro de agua potable -->
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <div class="input-group-text bg-gradient-danger">
+                                  <input type="radio" id="electrica" name="giro" value="electrica" />
+                                </div>
+                              </div>
+                              <label class="form-control" for="electrica">Industria Electrica y Captacion y Suministro de agua potable</label>
+                            </div>
+
+                            <!-- radio input of Otros -->
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <div class="input-group-text bg-gradient-danger">
+                                  <input type="radio" id="otros" name="giro" value="otros" />
+                                </div>
+                              </div>
+                              <label class="form-control" for="otros">Otros</label>
+                            </div>
+                          </div>
+
+                          <div class="form-group" id="isOtro" style="display: none;">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 my-4">Escriba el giro</h1>
+                            </div>
+                            <input type="text" class="form-control" id="otro_giro" name="otro_giro" placeholder="Otro Giro" />
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
   </div>
 </div>
-<div class="form-group" id="isOtro" style="display: none;">
-  <label for="otro_giro">Escriba el giro de su empresa</label><br />
-  <input
-    type="text"
-    class="form-control"
-    id="otro_giro"
-    name="otro_giro"
-    placeholder=""
-  />
-</div>
+
+<script>
+  function hideIfSelected(toCheck, hide, toHide, toReset) {
+    if (document.getElementById(toCheck).checked) {
+      document.getElementById(toHide).style.display = hide
+        ? "none"
+        : "block";
+    } else {
+      document.getElementById(toHide).style.display = hide
+        ? "block"
+        : "none";
+    }
+    resetInputs(toReset);
+  }
+  function resetInputs(toReset) {
+    toReset.forEach((element) => {
+      if (document.getElementById(element).type == "radio") {
+        document.getElementById(element).checked = false;
+      } else {
+        document.getElementById(element).value = "";
+      }
+    });
+  }
+</script>

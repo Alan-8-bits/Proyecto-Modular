@@ -1,274 +1,393 @@
-<h2>Información del Inmueble</h2>
-<hr />
-<div class="form-group">
-  <label for="mtrs">Metros cuadrados de construcción</label>
-  <input
-    type="number"
-    min="0"
-    class="form-control"
-    id="mtrs"
-    name="mtrs"
-    placeholder="Ingrese el valor en metros cuadrados"
-    required
-  />
-</div>
+<div class="row justify-content-center">
+  <div class="col-xl-7 col-lg-12 col-md-9 ">
+      <div class="card o-hidden border-0 shadow-lg my-5 mt-n5">
+          <div class="card-header py-3 text-center" style="background-color: #bf1e2e;">
+            <h4 class="m-0 text-white">Información del Inmueble</h4>
+          </div>
+          <div class="card-body p-0">
+              <div class="row justify-content-center">
+                  <div class="col-lg-7 my-auto">
+                      <div class="p-5">
+                        <div class="text-center">
+                            <h1 class="h4 text-gray-900 mb-4">Establecimiento</h1>
+                        </div>
 
-<div class="form-group">
-  <label for="niveles">Niveles</label>
-  <input
-    type="number"
-    min="0"
-    class="form-control"
-    id="niveles"
-    name="niveles"
-    placeholder="Ingrese los niveles del establecimiento"
-    required
-  />
-</div>
+                        <!-- Metros cuadrados de construcción input -->
+                        <div class="form-group">
+                            <input type="number" min="0" class="form-control" id="mtrs" name="mtrs" placeholder="Metros cuadrados de construcción" required/>
+                        </div>
+                        <!-- Niveles input -->
+                        <div class="form-group">
+                            <input type="number" min="0" class="form-control" id="niveles" name="niveles" placeholder="Niveles" required/>
+                        </div>
+                        <!-- Aforo input -->
+                        <div class="form-group">
+                            <input type="number" min="0" class="form-control" id="aforo" name="aforo" placeholder="Aforo" required/>
+                        </div>
 
-<div class="form-group">
-  <label for="aforo">Aforo</label>
-  <input
-    type="number"
-    min="0"
-    class="form-control"
-    id="aforo"
-    name="aforo"
-    placeholder="Ingrese el aforo del establecimiento"
-    required
-  />
-</div>
+                        <!-- checkbox selector of Dispositivos de seguridad with options [Sistema de Alarma,Extintores,Sensores de Gas,Sensores de Humo,Sensores de Humedad,Protección Personal,Interruptores] -->
+                        <!-- title of Dispositivos de seguridad -->
+                        <div class="text-center">
+                            <h1 class="h4 text-gray-900 my-4">Dispositivos de seguridad</h1>
+                        </div>
 
-<div
-  class="form-group"
->
-  <label for="#">Dispositivos de Seguridad</label><br />
+                        <div class="form-group">
+                          <!-- checkbox of Sistema de Alarma -->
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text bg-gradient-danger">
+                                <input type="checkbox" id="alarma" name="dispositivo" value="alarma" />
+                              </div>
+                            </div>
+                            <label class="form-control" for="alarma">Sistema de Alarma</label>
+                          </div>
 
-  <div class="input-group">
-    <span class="input-group-addon">
-      <input type="checkbox" id="alarma" name="dispositivo" value="alarma" />
-    </span>
-    <label class="form-control" for="alarma">Sistema de Alarma</label><br />
+                          <!-- checkbox of Extintores -->
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text bg-gradient-danger">
+                                <input type="checkbox" id="extintor" name="dispositivo" value="extintores" />
+                              </div>
+                            </div>
+                            <label class="form-control" for="extintor">Extintores</label>
+                          </div>
+
+                          <!-- checkbox of Sensores de Gas -->
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text bg-gradient-danger">
+                                <input type="checkbox" id="sensor_gas" name="dispositivo" value="sensor_gas" />
+                              </div>
+                            </div>
+                            <label class="form-control" for="sensor_gas">Sensores de Gas</label>
+                          </div>
+
+                          <!-- checkbox of Sensores de Humo -->
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text bg-gradient-danger">
+                                <input type="checkbox" id="sensor_humo" name="dispositivo" value="sensor_humo" />
+                              </div>
+                            </div>
+                            <label class="form-control" for="sensor_humo">Sensores de Humo</label>
+                          </div>
+
+                          <!-- checkbox of Sensores de Humedad -->
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text bg-gradient-danger">
+                                <input type="checkbox" id="sensor_humedad" name="dispositivo" value="sensor_humedad" />
+                              </div>
+                            </div>
+                            <label class="form-control" for="sensor_humedad">Sensores de Humedad</label>
+                          </div>
+
+                          <!-- checkbox of Protección Personal -->
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text bg-gradient-danger">
+                                <input type="checkbox" id="proteccion_personal" name="dispositivo" value="proteccion_personal" />
+                              </div>
+                            </div>
+                            <label class="form-control" for="proteccion_personal">Protección Personal</label>
+                          </div>
+
+                          <!-- checkbox of Interruptores -->
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text bg-gradient-danger">
+                                <input type="checkbox" id="interruptor" name="dispositivo" value="interruptor" />
+                              </div>
+                            </div>
+                            <label class="form-control" for="interruptor">Interruptores</label>
+                          </div>
+
+                        </div>
+
+                        <!-- checkbox selector of Tipos de señalamientos with options [Señales de prohibicion,Señales de obligación para la seguridad de tus trabajadores,Señales de advertencia en tus instalaciones,Señales de auxilio necesarias en el lugar de trabajo,Señales de equipos contra incendios,Señales luminosas,Señales acústicas,Señales balizamiento] -->
+                        <!-- title of Tipos de señalamientos -->
+                        <div class="text-center">
+                            <h1 class="h4 text-gray-900 my-4">Tipos de señalamientos</h1>
+                        </div>
+
+                        <div class="form-group">
+                          <!-- checkbox of Señales de prohibicion -->
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text bg-gradient-danger">
+                                <input type="checkbox" id="prohibicion" name="senalamiento" value="prohibicion" />
+                              </div>
+                            </div>
+                            <label class="form-control" for="prohibicion">Señales de prohibicion</label>
+                          </div>
+
+                          <!-- checkbox of Señales de obligación para la seguridad de tus trabajadores -->
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text bg-gradient-danger">
+                                <input type="checkbox" id="obligacion" name="senalamiento" value="obligacion" />
+                              </div>
+                            </div>
+                            <label class="form-control" for="obligacion">Señales de obligación para la seguridad de tus trabajadores</label>
+                          </div>
+
+                          <!-- checkbox of Señales de advertencia en tus instalaciones -->
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text bg-gradient-danger">
+                                <input type="checkbox" id="advertencia" name="senalamiento" value="advertencia" />
+                              </div>
+                            </div>
+                            <label class="form-control" for="advertencia">Señales de advertencia en tus instalaciones</label>
+                          </div>
+
+                          <!-- checkbox of Señales de auxilio necesarias en el lugar de trabajo -->
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text bg-gradient-danger">
+                                <input type="checkbox" id="auxilio" name="senalamiento" value="auxilio" />
+                              </div>
+                            </div>
+                            <label class="form-control" for="auxilio">Señales de auxilio necesarias en el lugar de trabajo</label>
+                          </div>
+
+                          <!-- checkbox of Señales de equipos contra incendios -->
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text bg-gradient-danger">
+                                <input type="checkbox" id="equipos" name="senalamiento" value="equipos" />
+                              </div>
+                            </div>
+                            <label class="form-control" for="equipos">Señales de equipos contra incendios</label>
+                          </div>
+
+                          <!-- checkbox of Señales luminosas -->
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text bg-gradient-danger">
+                                <input type="checkbox" id="luminosas" name="senalamiento" value="luminosas" />
+                              </div>
+                            </div>
+                            <label class="form-control" for="luminosas">Señales luminosas</label>
+                          </div>
+
+                          <!-- checkbox of Señales acústicas -->
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text bg-gradient-danger">
+                                <input type="checkbox" id="acusticas" name="senalamiento" value="acusticas" />
+                              </div>
+                            </div>
+                            <label class="form-control" for="acusticas">Señales acústicas</label>
+                          </div>
+
+                          <!-- checkbox of Señales balizamiento -->
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text bg-gradient-danger">
+                                <input type="checkbox" id="balizamiento" name="senalamiento" value="balizamiento" />
+                              </div>
+                            </div>
+                            <label class="form-control" for="balizamiento">Señales balizamiento</label>
+                          </div>
+
+                        </div>
+
+                        <!-- title of Medidas de seguridad -->
+                        <div class="text-center">
+                            <h1 class="h4 text-gray-900 my-4">Medidas de seguridad</h1>
+                        </div>
+
+                        <div class="form-inline">
+                          <input type="text" class="form-control" id="inp_medidas" name="inp_medidas" placeholder="Ingresa las medidas de seguridad" style="width: 80%;"/>
+                          <button type="button" onclick="newMedida()" style="width: 19%;" class="btn btn-danger">Añadir</button>
+                        </div>
+                        <ul id="list" class="list-group mt-2"></ul>
+
+                        <!-- checkbox selector of Recursos Materiales with options [Materia Prima,Maquinaria y/o Herramienta,Bienes muebles y objetos de oficina,Vehículos,Productos Químicos,Energía y Combustible] -->
+                        <!-- title of Recursos Materiales -->
+                        <div class="text-center">
+                          <h1 class="h4 text-gray-900 my-4">Recursos Materiales</h1>
+                        </div>
+
+                        <div class="form-group">
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text bg-gradient-danger">
+                                <input type="checkbox" id="materia_prima" name="recursos" value="materia_prima" />
+                              </div>
+                            </div>
+                            <label class="form-control" for="materia_prima">Materia Prima</label>
+                          </div>
+
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text bg-gradient-danger">
+                                <input type="checkbox" id="maquinaria" name="recursos" value="maquinaria" />
+                              </div>
+                            </div>
+                            <label class="form-control" for="maquinaria">Maquinaria y/o Herramienta</label>
+                          </div>
+
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text bg-gradient-danger">
+                                <input type="checkbox" id="bienes" name="recursos" value="bienes" />
+                              </div>
+                            </div>
+                            <label class="form-control" for="bienes">Bienes muebles y objetos de oficina</label>
+                          </div>
+
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text bg-gradient-danger">
+                                <input type="checkbox" id="vehiculos" name="recursos" value="vehiculos" />
+                              </div>
+                            </div>
+                            <label class="form-control" for="vehiculos">Vehículos</label>
+                          </div>
+
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text bg-gradient-danger">
+                                <input type="checkbox" id="quimicos" name="recursos" value="quimicos" />
+                              </div>
+                            </div>
+                            <label class="form-control" for="quimicos">Productos Químicos</label>
+                          </div>
+
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text bg-gradient-danger">
+                                <input type="checkbox" id="energia" name="recursos" value="energia" />
+                              </div>
+                            </div>
+                            <label class="form-control" for="energia">Energía y Combustible</label>
+                          </div>
+
+                        </div>
+
+                        <!-- checkbox selector of ¿A que riesgos esta expuesto? with options [Métodos materiales o procedimientos peligrosos,Defectos de los agentes,Peligros públicos,Peligros del medio ambiente,Peligros por la colocación,Peligros de indumentaria y vestido,Protegido inadecuadamente,Riesgo físico,Otra clasificación,No especificado] -->
+                        <!-- title of ¿A que riesgos esta expuesto? -->
+                        <div class="text-center">
+                          <h1 class="h4 text-gray-900 my-4">¿A que riesgos esta expuesto?</h1>
+                        </div>
+
+                        <div class="form-group">
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text bg-gradient-danger">
+                                <input type="checkbox" id="metodos" name="riesgos" value="metodos" />
+                              </div>
+                            </div>
+                            <label class="form-control" for="metodos">Métodos, materiales o procedimientos peligrosos</label>
+                          </div>
+
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text bg-gradient-danger">
+                                <input type="checkbox" id="defectos" name="riesgos" value="defectos" />
+                              </div>
+                            </div>
+                            <label class="form-control" for="defectos">Defectos de los agentes</label>
+                          </div>
+
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text bg-gradient-danger">
+                                <input type="checkbox" id="peligros" name="riesgos" value="peligros" />
+                              </div>
+                            </div>
+                            <label class="form-control" for="peligros">Peligros públicos</label>
+                          </div>
+
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text bg-gradient-danger">
+                                <input type="checkbox" id="ambiente" name="riesgos" value="ambiente" />
+                              </div>
+                            </div>
+                            <label class="form-control" for="ambiente">Peligros del medio ambiente</label>
+                          </div>
+
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text bg-gradient-danger">
+                                <input type="checkbox" id="colocacion" name="riesgos" value="colocacion" />
+                              </div>
+                            </div>
+                            <label class="form-control" for="colocacion">Peligros por la colocación</label>
+                          </div>
+
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text bg-gradient-danger">
+                                <input type="checkbox" id="indumentaria" name="riesgos" value="indumentaria" />
+                              </div>
+                            </div>
+                            <label class="form-control" for="indumentaria">Protegido inadecuadamente</label>
+                          </div>
+
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text bg-gradient-danger">
+                                <input type="checkbox" id="fisico" name="riesgos" value="fisico" />
+                              </div>
+                            </div>
+                            <label class="form-control" for="fisico">Riesgo físico</label>
+                          </div>
+
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text bg-gradient-danger">
+                                <input type="checkbox" id="otra" name="riesgos" value="otra" />
+                              </div>
+                            </div>
+                            <label class="form-control" for="otra">Otra clasificación</label>
+                          </div>
+
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text bg-gradient-danger">
+                                <input type="checkbox" id="no" name="riesgos" value="no_especificado" />
+                              </div>
+                            </div>
+                            <label class="form-control" for="no">No especificado</label>
+                          </div>
+                        </div>
+
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
   </div>
-
-  <div class="input-group">
-    <span class="input-group-addon">
-      <input
-        type="checkbox"
-        id="extintores"
-        name="dispositivo"
-        value="extintores"
-      />
-    </span>
-    <label class="form-control" for="extintores">Extintores</label><br />
-  </div>
-  <div class="input-group">
-    <span class="input-group-addon">
-      <input
-        type="checkbox"
-        id="sensor_gas"
-        name="dispositivo"
-        value="sensor_gas"
-      />
-    </span>
-    <label class="form-control" for="sensor_gas">Sensores de Gas</label><br />
-  </div>
-  <div class="input-group">
-    <span class="input-group-addon">
-      <input
-        type="checkbox"
-        id="sensor_humo"
-        name="dispositivo"
-        value="sensor_humo"
-      />
-    </span>
-    <label class="form-control" for="sensor_humo">Sensores de Humo</label><br />
-  </div>
-  <div class="input-group">
-    <span class="input-group-addon">
-      <input
-        type="checkbox"
-        id="sensor_humedad"
-        name="dispositivo"
-        value="sensor_humedad"
-      />
-    </span>
-    <label class="form-control" for="sensor_humedad">Sensores de Humedad</label
-    ><br />
-  </div>
-  <div class="input-group">
-    <span class="input-group-addon">
-      <input
-        type="checkbox"
-        id="proteccion_personal"
-        name="dispositivo"
-        value="proteccion_personal"
-      />
-    </span>
-    <label class="form-control" for="proteccion_personal"
-      >Protección Personal</label
-    ><br />
-  </div>
-
-  <div class="input-group">
-    <span class="input-group-addon">
-      <input
-        type="checkbox"
-        id="interruptores"
-        name="dispositivo"
-        value="interruptores"
-      />
-    </span>
-    <label class="form-control" for="interruptores">Interruptores</label><br />
-  </div>
-</div>
-
-<div
-  class="form-group"
->
-  <label for="#">Tipos de señalamientos</label><br />
-
-  <div class="input-group">
-    <span class="input-group-addon">
-      <input
-        type="checkbox"
-        id="senales_prohibicion"
-        name="senal"
-        value="senales_prohibicion"
-      />
-    </span>
-    <label class="form-control" for="senales_prohibicion"
-      >Señales de prohibicion</label
-    ><br />
-  </div>
-
-  <div class="input-group">
-    <span class="input-group-addon">
-      <input
-        type="checkbox"
-        id="senales_obligacion"
-        name="senal"
-        value="senales_obligacion"
-      />
-    </span>
-    <label class="form-control" for="senales_obligacion"
-      >Señales de obligación para la seguridad de tus trabajadores</label
-    ><br />
-  </div>
-
-  <div class="input-group">
-    <span class="input-group-addon">
-      <input
-        type="checkbox"
-        id="senales_advertencia"
-        name="senal"
-        value="senales_advertencia"
-      />
-    </span>
-    <label class="form-control" for="senales_advertencia"
-      >Señales de advertencia en tus instalaciones</label
-    ><br />
-  </div>
-
-  <div class="input-group">
-    <span class="input-group-addon">
-      <input
-        type="checkbox"
-        id="senales_auxilio"
-        name="senal"
-        value="senales_auxilio"
-      />
-    </span>
-    <label class="form-control" for="senales_auxilio"
-      >Señales de auxilio necesarias en el lugar de trabajo</label
-    ><br />
-  </div>
-
-  <div class="input-group">
-    <span class="input-group-addon">
-      <input
-        type="checkbox"
-        id="senales_equipos"
-        name="senal"
-        value="senales_equipos"
-      />
-    </span>
-    <label class="form-control" for="senales_equipos"
-      >Señales de equipos contra incendios</label
-    ><br />
-  </div>
-
-  <div class="input-group">
-    <span class="input-group-addon">
-      <input
-        type="checkbox"
-        id="senales_luminosas"
-        name="senal"
-        value="senales_luminosas"
-      />
-    </span>
-    <label class="form-control" for="senales_luminosas">Señales luminosas</label
-    ><br />
-  </div>
-
-  <div class="input-group">
-    <span class="input-group-addon">
-      <input
-        type="checkbox"
-        id="senales_acusticas"
-        name="senal"
-        value="senales_acusticas"
-      />
-    </span>
-    <label class="form-control" for="senales_acusticas">Señales acústicas</label
-    ><br />
-  </div>
-
-  <div class="input-group">
-    <span class="input-group-addon">
-      <input
-        type="checkbox"
-        id="senales_balizamiento"
-        name="senal"
-        value="senales_balizamiento"
-      />
-    </span>
-    <label class="form-control" for="senales_balizamiento"
-      >Señales balizamiento</label
-    ><br />
-  </div>
-</div>
-
-<div class="form-inline">
-  <label for="inp_medidas">Medidas de seguridad</label>
-  <br />
-  <input
-    type="text"
-    class="form-control"
-    id="inp_medidas"
-    name="inp_medidas"
-    placeholder="Ingresa las medidas de seguridad"
-    style="width: 80%;"
-  />
-  <button type="button" onclick="newMedida()" style="width: 19%;" class="btn">
-    Añadir
-  </button>
-  <ul id="list"></ul>
 </div>
 
 <script>
   function newMedida() {
     var li = document.createElement("li");
+    li.className = "list-group-item form-inline";
+    var btn = document.createElement("button");
+    btn.className = "btn btn-danger ml-2";
+    btn.innerHTML = "Eliminar";
+    btn.style.width = "20%";
+    btn.onclick = function() {
+      li.remove();
+    }
+
     var medidasValue = document.getElementById("inp_medidas").value;
 
     var input = document.createElement("input");
     input.type = "text";
-    input.className = "form-control";
+    input.className = "form-control input-normal";
+    input.style.width = "78%";
     input.value = medidasValue;
     input.readOnly = true;
     input.name = "medidas";
 
     li.appendChild(input);
+    li.appendChild(btn);
     if (medidasValue === "") {
       alert("Agregue al menos una medida de seguridad");
     } else {
@@ -277,125 +396,3 @@
     document.getElementById("inp_medidas").value = "";
   }
 </script>
-
-<div class="form-group">
-  <label for="#">Recursos Materiales</label><br />
-
-  <div class="input-group">
-    <span class="input-group-addon">
-      <input type="checkbox" id="materia_prima" name="material" value="materia_prima" />
-    </span>
-    <label class="form-control" for="materia_prima">Materia Prima</label><br />
-  </div>
-  <div class="input-group">
-    <span class="input-group-addon">
-      <input type="checkbox" id="maquinaria" name="material" value="maquinaria" />
-    </span>
-    <label class="form-control" for="maquinaria">Maquinaria y/o Herramienta</label><br />
-  </div>
-
-  <div class="input-group">
-    <span class="input-group-addon">
-      <input type="checkbox" id="bienes" name="material" value="bienes" />
-    </span>
-    <label class="form-control" for="bienes"
-      >Bienes muebles y objetos de oficina</label
-    ><br />
-  </div>
-
-  <div class="input-group">
-    <span class="input-group-addon">
-      <input type="checkbox" id="vehiculos" name="material" value="vehiculos" />
-    </span>
-    <label class="form-control" for="vehiculos">Vehículos</label><br />
-  </div>
-  <div class="input-group">
-    <span class="input-group-addon">
-      <input type="checkbox" id="quimicos" name="material" value="quimicos" />
-    </span>
-    <label class="form-control" for="quimicos">Productos Químicos</label><br />
-  </div>
-
-  <div class="input-group">
-    <span class="input-group-addon">
-      <input type="checkbox" id="energia" name="material" value="energia" />
-    </span>
-    <label class="form-control" for="energia">Energía y Combustible</label><br />
-  </div>
-</div>
-
-<div class="form-group">
-  <label for="#"
-    >¿Qué riesgos consideras que pudiera tener tu giro empresarial? </label
-  ><br />
-  <div class="input-group">
-    <span class="input-group-addon">
-      <input type="checkbox" id="metodos_peligrosos" name="riesgo" value="metodos_peligrosos" />
-    </span>
-    <label class="form-control" for="metodos_peligrosos"
-      >Métodos, materiales o procedimientos peligrosos</label
-    ><br />
-  </div>
-
-  <div class="input-group">
-    <span class="input-group-addon">
-      <input type="checkbox" id="defectos" name="riesgo" value="defectos" />
-    </span>
-    <label class="form-control" for="defectos">Defectos de los agentes</label><br />
-  </div>
-
-  <div class="input-group">
-    <span class="input-group-addon">
-      <input type="checkbox" id="publicos" name="riesgo" value="publicos" />
-    </span>
-    <label class="form-control" for="publicos">Peligros públicos</label><br />
-  </div>
-
-  <div class="input-group">
-    <span class="input-group-addon">
-      <input type="checkbox" id="medio_ambiente" name="riesgo" value="medio_ambiente" />
-    </span>
-    <label class="form-control" for="medio_ambiente">Peligros del medio ambiente</label
-    ><br />
-  </div>
-
-  <div class="input-group">
-    <span class="input-group-addon">
-      <input type="checkbox" id="colocacion" name="riesgo" value="colocacion" />
-    </span>
-    <label class="form-control" for="colocacion">Peligros por la colocación</label><br />
-  </div>
-
-  <div class="input-group">
-    <span class="input-group-addon">
-      <input type="checkbox" id="indumentaria" name="riesgo" value="indumentaria" />
-    </span>
-    <label class="form-control" for="indumentaria"
-      >Peligros de indumentaria y vestido</label
-    ><br />
-  </div>
-  <div class="input-group">
-    <span class="input-group-addon">
-      <input type="checkbox" id="protegido_inadecuadamente" name="riesgo" value="protegido_inadecuadamente" />
-    </span>
-    <label class="form-control" for="protegido_inadecuadamente">Protegido inadecuadamente</label><br />
-  </div>
-  <div class="input-group">
-    <span class="input-group-addon">
-      <input type="checkbox" id="fisico" name="riesgo" value="fisico" />
-    </span>
-    <label class="form-control" for="fisico">Riesgo físico, s.c.e.</label><br />
-  </div>
-  <div class="input-group">
-    <span class="input-group-addon">
-      <input type="checkbox" id="otra" name="riesgo" value="otra" />
-    </span>
-    <label class="form-control" for="otra">Otra clasificación</label><br />
-  </div>
-  <div class="input-group">
-    <span class="input-group-addon">
-      <input type="checkbox" id="no_especificado" name="riesgo" value="no_especificado" />
-    </span>
-    <label class="form-control" for="no_especificado">No especificado</label><br />
-  </div>
-</div>

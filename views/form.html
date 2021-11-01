@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>EVALR Login</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="/font_awesome" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="/sb-admin-css" rel="stylesheet">
+
+</head>
+
+<body class="bg-gradient-white">
+
+    <header class="page-header page-header-dark bg-gradient-danger ">
+        <div class="container-xl px-4 pb-5">
+            <div class="page-header-content pt-4">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-auto mt-4">
+                        <h1 class="page-header-title text-white">
+                            Formulario
+                        </h1>
+                        <div class="page-header-subtitle pb-4 font-weight-bold" style="color: #ffc7cd;">A continuacion se presenta una serie de preguntas para evaluar el riesgo de su empresa</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="row justify-content-center pt-n5 pb-4">
+        <div class="col-xl-7 col-lg-12 col-md-9 ">
+            <div class="card o-hidden border-0 shadow-lg my-5 mt-n5">
+                <div class="card-body p-0">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6 my-auto">
+                            <div class="p-5">
+                                <div class="text-center">
+                                    <a href="/"><img src="/img/logo" alt="" ></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form action="/submit-forms" method="POST" id="form_empresa">
+        <div id="datos_generales_form" class="pb-4"></div>
+        <div id="giro_form" class="pb-4"></div>
+        <div id="trabajadores_form" class="pb-4"></div>
+        <div id="inmueble_form" class="pb-4"></div>
+
+        <div class="row justify-content-center pt-n5 pb-4">
+            <div class="col-xl-7 col-lg-12 col-md-9 ">
+                <div class="card o-hidden border-0 shadow-lg my-5 mt-n5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row justify-content-center">
+                            <div class="col-lg-6 my-auto">
+                                <div class="p-5">
+                                    <div style="text-align: center;">
+                                        <button class="btn btn-danger" type="submit">Enviar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </form>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="/jquery"></script>
+    <script src="/bootstrap"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="/jquery-easing"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="/sb-admin-js"></script>
+
+</body>
+
+</html>
+
+<style>
+.form-control:focus {
+    border-color: #bf1e2e;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
+}
+</style>
+
+<script>
+    $(document).ready(function () {
+      $("#datos_generales_form").load("/datos-generales");
+      $("#giro_form").load("/giro");
+      $("#trabajadores_form").load("/trabajadores");
+      $("#inmueble_form").load("/inmueble");
+    });
+</script>

@@ -30,7 +30,8 @@ module.exports = (sequelize, DataTypes) => {
       codigo_postal: DataTypes.INTEGER,
       calle_1: DataTypes.STRING,
       calle_2: DataTypes.STRING,
-      giro: DataTypes.STRING
+      giro: DataTypes.STRING,
+      riesgo: DataTypes.FLOAT
     },
     {
       sequelize,

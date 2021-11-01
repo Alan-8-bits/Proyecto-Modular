@@ -38,6 +38,9 @@ module.exports = {
       giro: {
         type: Sequelize.STRING
       },
+      riesgo: {
+        type: Sequelize.FLOAT
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

@@ -1,42 +1,45 @@
-<h2>Trabajadores</h2>
-<hr />
-<div class="form-group">
-  <label for="trabajadores_masculinos">Numero de trabajadores Masculinos</label>
-  <input
-    type="number"
-    min="0"
-    class="form-control"
-    id="trabajadores_masculinos"
-    name="trabajadores_masculinos"
-    placeholder="En caso de NO tener poner 0"
-    required
-  />
-</div>
-<div class="form-group">
-  <label for="trabajadores_femeninos">Numero de trabajadores Femeninos</label>
-  <input
-    type="number"
-    min="0"
-    class="form-control"
-    id="trabajadores_femeninos"
-    name="trabajadores_femeninos"
-    placeholder="En caso de NO tener poner 0"
-    required
-  />
-</div>
-<div class="form-group">
-  <label for="">Rango de edad</label>
-  <select class="form-control" name="rango_edad" id="edad" required>
-    <option value="15-19">15-19</option>
-    <option value="20-24">20-24</option>
-    <option value="25-29">25-29</option>
-    <option value="30-34">30-34</option>
-    <option value="35-39">35-39</option>
-    <option value="40-44">40-44</option>
-    <option value="45-49">45-49</option>
-    <option value="50-54">50-54</option>
-    <option value="55-59">55-59</option>
-    <option value="60-64">60-64</option>
-    <option value="65-69">65-69</option>
-  </select>
+<div class="row justify-content-center">
+  <div class="col-xl-7 col-lg-12 col-md-9 ">
+      <div class="card o-hidden border-0 shadow-lg my-5 mt-n5">
+          <div class="card-header py-3 text-center" style="background-color: #bf1e2e;">
+            <h4 class="m-0 text-white">Trabajadores</h4>
+          </div>
+          <div class="card-body p-0">
+              <div class="row justify-content-center">
+                  <div class="col-lg-7 my-auto">
+                      <div class="p-5">
+                          <div class="text-center">
+                              <h1 class="h4 text-gray-900 mb-4">¿Cuantos trabajadores hay?</h1>
+                          </div>
+                          <div class="form-group">
+                              <input type="number" min="0" class="form-control" id="trabajadores_masculinos" name="trabajadores_masculinos" placeholder="Numero de trabajadores Masculinos" required />
+                          </div>
+                          <div class="form-group">
+                              <input type="number" min="0" class="form-control" id="trabajadores_femeninos" name="trabajadores_femeninos" placeholder="Numero de trabajadores Femeninos" required />
+                          </div>
+
+                          <div class="text-center">
+                            <h1 class="h4 text-gray-900 my-4">Rango de edad predominante</h1> 
+                        </div>
+                          <div class="form-group">
+                            <select class="form-control" name="rango_edad" id="edad" required>
+                              <option value="15-19">15-19</option>
+                              <option value="20-24">20-24</option>
+                              <option value="25-29">25-29</option>
+                              <option value="30-34">30-34</option>
+                              <option value="35-39">35-39</option>
+                              <option value="40-44">40-44</option>
+                              <option value="45-49">45-49</option>
+                              <option value="50-54">50-54</option>
+                              <option value="55-59">55-59</option>
+                              <option value="60-64">60-64</option>
+                              <option value="65-69">65-69</option>
+                            </select>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
 </div>

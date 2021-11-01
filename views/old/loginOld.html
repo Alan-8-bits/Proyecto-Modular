@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Formulario</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      media="screen"
+      href="https://fontlibrary.org//face/nimbus-sans-l"
+      type="text/css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Roboto:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#datos_generales_form").load("/datos-generales");
+        $("#giro_form").load("/giro");
+        $("#trabajadores_form").load("/trabajadores");
+        $("#inmueble_form").load("/inmueble");
+      });
+    </script>
+
+    <link rel="shortcut icon" href="#" />
+  </head>
+  <body style="font-family: 'Lato'; background-color: lightgray;">
+    <div class="logos" style="text-align: center;">
+      <img src="/img/logo" width="200" height="200" />
+      <br />
+      <br />
+      <h4
+        style="
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 4px;
+          font-family: 'Lato';
+          color: dimgray;
+          margin-top: -5px;
+        "
+      >
+        ⛑️ Evaluación de Riesgos CUCEI ⛑️
+      </h4>
+      <hr />
+    </div>
+    <div class="login" style="font-size: 16px; padding: 20px;">
+      <form
+        action="/formOrAlreadySaved"
+        method="POST"
+        id="form_empresa"
+        style="margin-top: 20px;"
+      >
+        <p>CAPTURA TU RFC</p>
+        <hr
+          style="
+            border: 0;
+            height: 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+          "
+        />
+        <link href="/form_styles" rel="stylesheet" />
+        <div
+          class="form-group"
+          style="text-align: left !important; padding: 0px; margin-top: 40px;"
+        >
+          <label for="rfc">RFC</label><br />
+          <input
+            type="text"
+            class="form-control"
+            id="rfc"
+            placeholder="Ingresa el RFC"
+            name="rfc"
+            maxlength="13"
+            style="height: 36px;"
+            required
+          />
+        </div>
+        <div style="text-align: center;">
+          <br />
+          <br />
+          <button type="submit" class="btn btn-primary">
+            Ingresar
+          </button>
+        </div>
+      </form>
+
+      
+    </div>
+  </body>
+</html>
+<style>
+  .logos {
+    position: sticky;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin-top: 40px;
+  }
+  div.content {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  .login {
+    width: 400px;
+    height: 320px;
+    background-color: #fff;
+    border-radius: 30px;
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    margin-top: 40px;
+    max-width: 100%;
+    max-height: 100%;
+    overflow: auto;
+    padding: 1em 2em;
+    border-bottom: 2px solid #ccc;
+    display: table;
+  }
+  .btn-primary {
+    border-radius: 30px;
+    background-color: dimgray;
+    border-color: inherit;
+    color: white;
+    text-transform: uppercase;
+    font-size: 16px;
+  }
+  .btn-primary:hover {
+    background-color: rgb(4, 163, 4) !important;
+    text-shadow: lightgrey;
+    border-color: dimgray;
+  }
+  #img_logo {
+    border-right: 2px solid #b1b1b1;
+    border-image: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0),
+        rgba(0, 0, 0, 0.75),
+        rgba(0, 0, 0, 0)
+      )
+      1;
+    border-bottom: 0;
+    height: 100px;
+  }
+</style>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>EVALR Login</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="/font_awesome" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="/sb-admin-css" rel="stylesheet">
+
+</head>
+
+<body class="d-flex bg-gradient-danger align-items-center">
+
+    <div class="container">
+
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+
+            <div class="col-xl-10 col-lg-12 col-md-9">
+                <div class="card o-hidden border-0 shadow-lg mt-5 mb-4">
+                    <div class="card-body p-0">
+                        <div class="row justify-content-center my-auto">
+      
+                          <div class="col py-5 text-center">
+                              <a href="/"><img src="/img/logo" alt="" ></a>
+                          </div>
+      
+                          <div class="vr"></div>
+      
+                          <div class="col my-auto">
+      
+                            <h1 class="h4 text-gray-900 mb-4">Inspecciones</h1>
+      
+                            <p class="pr-5">
+                              A continuación se muestran las inspecciones a empresas a ser agendadas asi como las que estan pendientes.
+                            </p>
+      
+                            <p class="pr-5">
+                             El criterio de ordenamiento es el riesgo calculado de la empresa mostrando primero las que tienen mayor riesgo.
+                            </p>
+      
+                            <a href="/">
+                              <button type="button" class="btn btn-danger btn-sm">
+                                Regresar a la pagina principal
+                              </button>
+                            </a>
+      
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Agendar Inspecciones card -->
+            <div class="col-xl-10 col-lg-12 col-md-9">
+                <div class="card o-hidden border-0 shadow-lg mb-4">
+                    <div class="card-body p-0">
+                        <div class="align-items-center">
+
+                            <div class="text-center">
+                                <h1 class="h4 text-danger my-4 font-weight-bold">Agendar Inspecciones</h1>
+                            </div>
+
+                            <% if(agendar && agendar.length > 0) {%>
+                            <div class="row justify-content-center">
+                                <table class="table table-bordered dataTable mb-5" style="width: 80%;">
+                                    <thead class="bg-danger">
+                                        <tr role="row">
+                                            <th class="border-danger text-white" style="width: 126px;">Razon Social</th>
+                                            <th class="border-danger text-white" style="width: 198px;">Giro</th>
+                                            <th class="border-danger text-white" style="width: 88px;">RFC</th>
+                                            <th class="border-danger text-white" style="width: 35px;">Riesgo</th>
+                                            <th class="border-danger text-white" style="width: 82px;">Inspeccion</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>    
+                                        <% for(var i=0; i < agendar.length; i++) {%>
+                                            <tr class="odd border-danger">
+                                                <td class="border-danger text-danger font-weight-bold"><%= agendar[i].razon_social %></td>
+                                                <td class="border-danger text-danger font-weight-bold"><%= agendar[i].giro %></td>
+                                                <td class="border-danger text-danger font-weight-bold"><%= agendar[i].rfc %></td>
+                                                <td class="border-danger text-danger font-weight-bold"><%= agendar[i].riesgo %></td>
+                                                <td class="border-danger text-danger font-weight-bold">
+                                                    <button type="button" class="btn btn-danger btn-sm openModal" data-empresa="<%= agendar[i].id %>" data-toggle="modal" data-target="#exampleModal">
+                                                        Agendar Inspeccion
+                                                    </button>                                   
+                                                </td>
+                                            </tr>
+                                        <% } %>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                            <% }else { %>
+                                <div class="text-center mb-4">
+                                    <h1 class="h4 text-danger mt-4">No hay Inspecciones a agendar!</h1>
+                                    <p class="px-5">
+                                        No se tiene registro de ninguna empresa pendiente de inspeccion.<br>Espera a que las empresas comienzen a enviar sus formularios.
+                                    </p>
+                                </div>
+                            <% } %>
+                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Inspecciones Pendientes card -->
+            <div class="col-xl-10 col-lg-12 col-md-9">
+                <div class="card o-hidden border-0 shadow-lg mb-4">
+                    <div class="card-body p-0">
+                        <div class="align-items-center">
+
+                            <div class="text-center">
+                                <h1 class="h4 text-danger my-4 font-weight-bold">Proximas Inspecciones</h1>
+                            </div>
+
+                            <% if(proximas && proximas.length > 0) {%>
+                            <div class="row justify-content-center">
+                                <table class="table table-bordered dataTable mb-5" style="width: 80%;">
+                                    <thead class="bg-danger">
+                                        <tr role="row">
+                                            <th class="border-danger text-white">Razon Social</th>
+                                            <th class="border-danger text-white">Giro</th>
+                                            <th class="border-danger text-white">RFC</th>
+                                            <th class="border-danger text-white">Riesgo</th>
+                                            <th class="border-danger text-white">Inspeccion</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody> 
+                                        <% for(var i=0; i < proximas.length; i++) {%>   
+                                        <tr class="odd border-danger">
+                                            <td class="border-danger text-danger font-weight-bold"><%= proximas[i].razon_social %></td>
+                                            <td class="border-danger text-danger font-weight-bold"><%= proximas[i].giro %></td>
+                                            <td class="border-danger text-danger font-weight-bold"><%= proximas[i].rfc %></td>
+                                            <td class="border-danger text-danger font-weight-bold"><%= proximas[i].riesgo %></td>
+                                            <% date_obj = proximas[i].inspeccions[0].fecha; %>
+                                            <% const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio","Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Deciembre"]; %>
+                                            <td class="border-danger text-danger font-weight-bold"><%= (date_obj.getDate()+1) +"-"+ monthNames[date_obj.getMonth()] +"-"+ (date_obj.getFullYear())  %></td>
+                                        </tr>
+                                        <% } %>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <% }else { %>
+                                <div class="text-center mb-4">
+                                    <h1 class="h4 text-danger mt-4">No hay Inspecciones proximas!</h1>
+                                    <p class="px-5">
+                                        No se han encontrado inspecciones proximas a llevar a cabo.<br>Empieza a agendarlas en la parte superior de la pagina.
+                                    </p>
+                                </div>
+                            <% } %>
+                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header bg-gradient-danger">
+              <h5 class="modal-title text-white" id="exampleModalLabel">Fecha de Inspeccion</h5>
+              <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form action="/set-fecha?inspeccion=" method="POST" id="form_fecha">
+            <div class="modal-body">
+                <input type='date' name="fecha" class="form-control border-danger text-danger" /> 
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+              <button type="submit" class="btn btn-success">Confirmar Fecha</button>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="/jquery"></script>
+    <script src="/bootstrap"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="/jquery-easing"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="/sb-admin-js"></script>
+
+</body>
+
+</html>
+
+<script>
+    $('.openModal').click(function() {
+        $('#form_fecha').attr('action', '/set-fecha?empresa=' + $(this).data('empresa'));
+    });
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker1').datetimepicker();
+    });
+</script>
