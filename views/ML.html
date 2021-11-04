@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Getting Started with ml5.js</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+  </head>
+
+  <body>
+    <script>
+      // Step 1: load data or create some data
+      fetch("dataset")
+      .then(response => response.json())
+      .then(json => {
+
+        // Step 2: set your neural network options
+        const options = {
+          layers: [
+            {
+              type: 'dense',
+              units: 16,
+              activation: 'relu'
+            },
+            {
+              type: 'dense',
+              units: 10,
+              activation: 'sigmoid'
+            },
+            {
+              type: 'dense',
+              units: 10,
+              activation: 'sigmoid'
+            },
+            {
+              type: 'dense',
+              units: 20,
+              activation: 'sigmoid'
+            },
+            {
+              type: 'dense',
+              activation: 'sigmoid'
+            }
+          ],
+          task: 'regression',
+          debug: true
+        }
+
+        // Step 3: initialize your neural network
+        const nn = ml5.neuralNetwork(options);
+
+        // Step 4: add data to the neural network
+        json.data.forEach(item => {
+          const inputs = {
+            agricultura: item.agricultura, 
+            comercio: item.comercio,
+            construccion: item.construccion,
+            electrica: item.electrica,
+            transformacion: item.transformacion,
+            extractivas: item.extractivas,
+            sociales: item.sociales,
+            empresas: item.empresas,
+            transportes: item.transportes,
+            anio: item.anio
+          };
+          const output = {
+            riesgo: item.riesgo
+          };
+
+          nn.addData(inputs, output);
+        });
+
+        // Step 5: normalize your data;
+        nn.normalizeData();
+
+        // Step 6: train your neural network
+        const trainingOptions = {
+          epochs: 100,
+          batchSize: 10
+        }
+        nn.train(trainingOptions, finishedTraining);
+
+        // Step 7: use the trained model
+        function finishedTraining(){
+          classify();
+        }
+
+        // Step 8: make a classification
+        function classify(){
+          const input = {
+            agricultura: 0, 
+            comercio: 0, 
+            construccion: 0, 
+            electrica: 0, 
+            transformacion: 1, 
+            extractivas: 0, 
+            sociales: 0, 
+            empresas: 0, 
+            transportes: 0, 
+            anio: 2030
+          }
+          nn.predict(input, handleResults);
+        }
+
+        // Step 9: define a function to handle the results of your classification
+        function handleResults(error, result) {
+          if(error){
+            console.error(error);
+            return;
+          }
+          console.log(result);
+        }
+
+        nn.save('modelo', () => {
+          console.log('model saved');
+        });
+
+      });
+      
+    </script>
+  </body>
+</html>

@@ -62,7 +62,7 @@
                       </div>
 
                       <!-- riesgo card with border danger -->
-                      <div class="col-xl-3 py-4">
+                      <div class="col-xl-2 py-4">
                         <div class="card border-left-danger shadow h-100 py-2">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
@@ -96,13 +96,15 @@
                       </div>
 
                       <!-- fecha de inspeccion card with border danger -->
-                      <div class="col-xl-3 pr-5 py-4">
+                      <div class="col-xl-4 pr-5 py-4">
                         <div class="card border-left-danger shadow h-100 py-2">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-uppercase mb-1">Fecha de inspección</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><%= inspeccion.fecha ? inspeccion.fecha : "No agendada"; %></div>
+                                        <% const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio","Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Deciembre"]; %>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><%= (inspeccion.fecha.getDate()+1) +"-"+ monthNames[inspeccion.fecha.getMonth()] +"-"+ (inspeccion.fecha.getFullYear())  %></div>
+                                        
                                     </div>
                                     <div class="col-auto">
                                         <i class="fas fa-calendar fa-2x text-gray-300"></i>

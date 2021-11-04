@@ -4,9 +4,11 @@ const Formulario = db.formulario;
 const Inspeccion = db.inspeccion;
 const Op = db.Sequelize.Op;
 const axios = require('axios');
-var FormData = require('form-data');
 
 module.exports = (app, root_dirname) => {
+  app.get("/dataset", (req, res) => {
+    res.sendFile(root_dirname + "/dataset.json");
+  });
   app.get("/datos-generales", (req, res) => {
     res.sendFile(root_dirname + "/views/datos_generales.html");
   });
