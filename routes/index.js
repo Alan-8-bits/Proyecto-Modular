@@ -48,7 +48,7 @@ module.exports = (app) => {
   // // Update a Inspeccion with id
   router.put("/inspecciones/:id", inspeccionController.update);
   // // Delete a Inspeccion with id
-  router.delete("/inspecciones/:id", inspeccionController.delete);
+  router.post("/inspecciones/delete", inspeccionController.delete);
   // // Delete all Inspecciones
   router.delete("/inspecciones/", inspeccionController.deleteAll);
 

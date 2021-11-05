@@ -92,7 +92,7 @@
                                                 <td class="border-danger text-danger font-weight-bold"><%= agendar[i].razon_social %></td>
                                                 <td class="border-danger text-danger font-weight-bold"><%= agendar[i].giro %></td>
                                                 <td class="border-danger text-danger font-weight-bold"><%= agendar[i].rfc %></td>
-                                                <td class="border-danger text-danger font-weight-bold"><%= agendar[i].riesgo %></td>
+                                                <td class="border-danger text-danger font-weight-bold"><%= String(agendar[i].riesgo) + "%" %></td>
                                                 <td class="border-danger text-danger font-weight-bold">
                                                     <button type="button" class="btn btn-danger btn-sm openModal" data-empresa="<%= agendar[i].id %>" data-toggle="modal" data-target="#exampleModal">
                                                         Agendar Inspeccion
@@ -146,10 +146,21 @@
                                             <td class="border-danger text-danger font-weight-bold"><%= proximas[i].razon_social %></td>
                                             <td class="border-danger text-danger font-weight-bold"><%= proximas[i].giro %></td>
                                             <td class="border-danger text-danger font-weight-bold"><%= proximas[i].rfc %></td>
-                                            <td class="border-danger text-danger font-weight-bold"><%= proximas[i].riesgo %></td>
+                                            <td class="border-danger text-danger font-weight-bold"><%= String(proximas[i].riesgo) + "%" %></td>
                                             <% date_obj = proximas[i].inspeccions[0].fecha; %>
                                             <% const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio","Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Deciembre"]; %>
-                                            <td class="border-danger text-danger font-weight-bold"><%= (date_obj.getDate()+1) +"-"+ monthNames[date_obj.getMonth()] +"-"+ (date_obj.getFullYear())  %></td>
+                                            <td class="border-danger text-danger font-weight-bold">
+                                                <%= (date_obj.getDate()+1) +"-"+ monthNames[date_obj.getMonth()] +"-"+ (date_obj.getFullYear())  %>
+                                                <br>
+                                                <button type="button" class="btn btn-danger btn-sm openModal" data-empresa="<%= proximas[i].id %>" data-toggle="modal" data-target="#exampleModal">
+                                                    Reagendar Inspeccion
+                                                </button>
+                                                <br>
+                                                <form action="/api/inspecciones/delete" method="POST">
+                                                <button type="submit" class="btn btn-success btn-sm openModal mt-1" name="id" value="<%= proximas[i].id %>">
+                                                    Inspeccion Realizada
+                                                </button></form>
+                                            </td>
                                         </tr>
                                         <% } %>
                                     </tbody>

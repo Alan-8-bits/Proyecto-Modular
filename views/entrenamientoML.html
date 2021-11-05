@@ -15,32 +15,32 @@
 
         // Step 2: set your neural network options
         const options = {
-          layers: [
-            {
-              type: 'dense',
-              units: 16,
-              activation: 'relu'
-            },
-            {
-              type: 'dense',
-              units: 10,
-              activation: 'sigmoid'
-            },
-            {
-              type: 'dense',
-              units: 10,
-              activation: 'sigmoid'
-            },
-            {
-              type: 'dense',
-              units: 20,
-              activation: 'sigmoid'
-            },
-            {
-              type: 'dense',
-              activation: 'sigmoid'
-            }
-          ],
+          // layers: [
+          //   {
+          //     type: 'dense',
+          //     units: 16,
+          //     activation: 'relu'
+          //   },
+          //   {
+          //     type: 'dense',
+          //     units: 10,
+          //     activation: 'sigmoid'
+          //   },
+          //   {
+          //     type: 'dense',
+          //     units: 10,
+          //     activation: 'sigmoid'
+          //   },
+          //   {
+          //     type: 'dense',
+          //     units: 20,
+          //     activation: 'sigmoid'
+          //   },
+          //   {
+          //     type: 'dense',
+          //     activation: 'sigmoid'
+          //   }
+          // ],
           task: 'regression',
           debug: true
         }
@@ -49,17 +49,9 @@
         const nn = ml5.neuralNetwork(options);
 
         // Step 4: add data to the neural network
-        json.data.forEach(item => {
+        json.forEach(item => {
           const inputs = {
-            agricultura: item.agricultura, 
-            comercio: item.comercio,
-            construccion: item.construccion,
-            electrica: item.electrica,
-            transformacion: item.transformacion,
-            extractivas: item.extractivas,
-            sociales: item.sociales,
-            empresas: item.empresas,
-            transportes: item.transportes,
+            giro: item.giro, 
             anio: item.anio
           };
           const output = {
@@ -74,28 +66,21 @@
 
         // Step 6: train your neural network
         const trainingOptions = {
-          epochs: 100,
+          epochs: 40,
           batchSize: 10
         }
         nn.train(trainingOptions, finishedTraining);
 
         // Step 7: use the trained model
         function finishedTraining(){
+          nn.save('MLmodel');
           classify();
         }
 
         // Step 8: make a classification
         function classify(){
           const input = {
-            agricultura: 0, 
-            comercio: 0, 
-            construccion: 0, 
-            electrica: 0, 
-            transformacion: 1, 
-            extractivas: 0, 
-            sociales: 0, 
-            empresas: 0, 
-            transportes: 0, 
+            giro: "Transportes y comunicaciones",  
             anio: 2030
           }
           nn.predict(input, handleResults);
@@ -110,9 +95,9 @@
           console.log(result);
         }
 
-        nn.save('modelo', () => {
-          console.log('model saved');
-        });
+        // nn.save('modelo', () => {
+        //   console.log('model saved');
+        // });
 
       });
       

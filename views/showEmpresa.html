@@ -68,7 +68,7 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-uppercase mb-1">Riesgo</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><%= empresa.riesgo %></div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><%= String(empresa.riesgo) + "%" %></div>
                                     </div>
                                     <div class="col-auto">
                                         <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -102,9 +102,12 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-uppercase mb-1">Fecha de inspección</div>
-                                        <% const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio","Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Deciembre"]; %>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><%= (inspeccion.fecha.getDate()+1) +"-"+ monthNames[inspeccion.fecha.getMonth()] +"-"+ (inspeccion.fecha.getFullYear())  %></div>
-                                        
+                                        <% if( inspeccion.fecha ) {%>
+                                            <% const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio","Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Deciembre"]; %>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><%= (inspeccion.fecha.getDate()+1) +"-"+ monthNames[inspeccion.fecha.getMonth()] +"-"+ (inspeccion.fecha.getFullYear())  %></div>
+                                        <% }else { %>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">No determinada</div>
+                                        <% } %>
                                     </div>
                                     <div class="col-auto">
                                         <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -114,6 +117,60 @@
                         </div>
                       </div>
                               
+                    </div>
+                    <div class="row justify-content-center mt-n4">
+                        <!-- estatus de inspeccion card with border danger -->
+                        <div class="col py-4 pl-5">
+                            <div class="card border-left-danger shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-uppercase mb-1">Correo</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><%= empresa.correo %></div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col row py-4 pr-5">
+                            
+                            <div class="col">
+                                <div class="card border-left-danger shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-uppercase mb-1">Total de empleados</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><%= formulario.trabajadores_masculinos + formulario.trabajadores_femeninos %></div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col ">
+                                <div class="card border-left-danger shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-uppercase mb-1">Empleados en riesgo</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><%= Math.ceil((formulario.trabajadores_masculinos + formulario.trabajadores_femeninos) * (empresa.riesgo /100)) %></div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>

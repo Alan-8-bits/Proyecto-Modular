@@ -19,6 +19,7 @@
 
     <!-- Custom styles for this template-->
     <link href="/sb-admin-css" rel="stylesheet">
+    <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
 
 </head>
 
@@ -60,6 +61,7 @@
 
     <form action="/submit-forms" method="POST" id="form_empresa">
         <div id="datos_generales_form" class="pb-4"></div>
+        <input type="hidden" id="riesgo_empresa" name="riesgo"/>
         <div id="giro_form" class="pb-4"></div>
         <div id="trabajadores_form" class="pb-4"></div>
         <div id="inmueble_form" class="pb-4"></div>
@@ -73,7 +75,8 @@
                             <div class="col-lg-6 my-auto">
                                 <div class="p-5">
                                     <div style="text-align: center;">
-                                        <button class="btn btn-danger" type="submit">Enviar</button>
+                                        <button id="hiddenSubmitButton" class="d-none" type="submit"></button>
+                                        <button id="showableSubmitButton" class="btn btn-danger" type="button">Enviar</button>
                                     </div>
                                 </div>
                             </div>
@@ -107,10 +110,42 @@
 </style>
 
 <script>
-    $(document).ready(function () {
-      $("#datos_generales_form").load("/datos-generales");
-      $("#giro_form").load("/giro");
-      $("#trabajadores_form").load("/trabajadores");
-      $("#inmueble_form").load("/inmueble");
+$(document).ready(function () {
+    $("#datos_generales_form").load("/datos-generales");
+    $("#giro_form").load("/giro");
+    $("#trabajadores_form").load("/trabajadores");
+    $("#inmueble_form").load("/inmueble");
+
+    $('#showableSubmitButton').click(function() {
+        if ( ! $("input[name='giro']").is(':checked') ){
+            $('#hiddenSubmitButton').click();
+        }
+
+        const options = {
+            task: 'regression',
+            debug: true
+        }
+        const nn = ml5.neuralNetwork(options);
+        nn.load('/MLmodel.json',modelReady);
+        function modelReady() {
+            const input = {
+                giro: $("input[name='giro']:checked").val(),  
+                anio: new Date().getFullYear()
+            }
+            nn.predict(input, handleResults);
+        }
+        function handleResults(error, result) {
+            if(error){
+                console.error(error);
+                return;
+            }
+            prediccion = result[0].riesgo;
+            prediccion = Math.round(prediccion * 100) / 100;
+            $("#riesgo_empresa").val(prediccion);
+
+            $('#hiddenSubmitButton').click();
+        }
+        
     });
+});
 </script>

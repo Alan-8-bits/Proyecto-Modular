@@ -87,16 +87,14 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-  const id = req.params.id;
+  const id = req.body.id;
 
   Inspeccion.destroy({
     where: { id: id }
   })
     .then(num => {
       if (num == 1) {
-        res.send({
-          message: "Inspeccion was deleted successfully!"
-        });
+        res.redirect('/agendar-inspecciones');
       } else {
         res.send({
           message: `Cannot delete Inspeccion with id=${id}. Maybe Inspeccion was not found!`

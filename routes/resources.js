@@ -9,6 +9,15 @@ module.exports = (app, root_dirname) => {
   app.get("/dataset", (req, res) => {
     res.sendFile(root_dirname + "/dataset.json");
   });
+  app.get("/MLmodel.json", (req, res) => {
+    res.sendFile(root_dirname + "/MLmodel/MLmodel.json");
+  });
+  app.get("/model_meta.json", (req, res) => {
+    res.sendFile(root_dirname + "/MLmodel/MLmodel_meta.json");
+  });
+  app.get("/MLmodel.weights.bin", (req, res) => {
+    res.sendFile(root_dirname + "/MLmodel/MLmodel.weights.bin");
+  });
   app.get("/datos-generales", (req, res) => {
     res.sendFile(root_dirname + "/views/datos_generales.html");
   });
@@ -83,7 +92,8 @@ module.exports = (app, root_dirname) => {
 
     if (emp !== null) {
       var insp = await Inspeccion.findOne({ where: { empresa_id: { [Op.eq]: emp.id } } });
-      res.render("showEmpresa.html", {empresa: emp, inspeccion: insp});
+      var form = await Formulario.findOne({ where: { empresa_id: { [Op.eq]: emp.id } } });
+      res.render("showEmpresa.html", {empresa: emp, inspeccion: insp, formulario: form});
     }
     else{
       res.render("form.html", { rfc: rfc });
@@ -112,7 +122,8 @@ module.exports = (app, root_dirname) => {
 
     if (emp !== null) {
       var insp = await Inspeccion.findOne({ where: { empresa_id: { [Op.eq]: emp.id } } });
-      res.render("showEmpresa.html", {empresa: emp, inspeccion: insp});
+      var form = await Formulario.findOne({ where: { empresa_id: { [Op.eq]: emp.id } } });
+      res.render("showEmpresa.html", {empresa: emp, inspeccion: insp, formulario: form});
     }
   });
 
@@ -138,7 +149,7 @@ module.exports = (app, root_dirname) => {
     //   res.send(error);
     // })
 
-    req.body.riesgo = 5.0;
+    // req.body.riesgo = 5.0;
 
     // Create Empresa
     const empresa = {
