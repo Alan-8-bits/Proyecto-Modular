@@ -2,12 +2,14 @@ const db = require("../models");
 const Empresa = db.empresa;
 const Formulario = db.formulario;
 const Inspeccion = db.inspeccion;
+const Users = db.Administracion;
 const Op = db.Sequelize.Op;
 
 const empresaController = require("../controllers/empresa");
 const formularioController = require("../controllers/formulario");
 const inspeccionController = require("../controllers/inspeccion");
 const axios = require('axios');
+const bcrypt = require('bcrypt');
 
 module.exports = (app, root_dirname) => {
   app.get("/dataset", (req, res) => {
@@ -34,32 +36,48 @@ module.exports = (app, root_dirname) => {
   app.get("/inmueble", (req, res) => {
     res.sendFile(root_dirname + "/views/inmueble.html");
   });
+  app.post("/login-agendar", async (req, res) => {
+
+    var usuario = await Users.findOne({ where: { username: { [Op.eq]: req.body.username } } });
+    
+    if (!usuario) {
+      res.render(root_dirname + "/views/loginAgendar.html", {mensaje: "No existe usuario con ese username"});
+    }
+
+    var auth = await bcrypt.compare(req.body.password, usuario.password);
+
+    if (auth) {
+      agendar = await Empresa.findAll({
+          where: {
+            '$inspeccions.estatus$': { [Op.eq]: 'En revision' }
+          },
+          include: [{
+            model: Inspeccion, 
+            as: "inspeccions"
+          }]
+      });
+
+      proximas = await Empresa.findAll({
+          where: {
+            '$inspeccions.estatus$': { [Op.eq]: 'Agendada' }
+          },
+          include: [{
+            model: Inspeccion, 
+            as: "inspeccions"
+          }],
+          order: [
+            ['inspeccions', 'fecha', 'ASC']
+          ]
+      });
+
+      res.render(root_dirname + "/views/setInspeccion.html", {agendar: agendar, proximas: proximas});
+    }
+    else {
+      res.render(root_dirname + "/views/loginAgendar.html", {mensaje: "Credenciales invalidas"});
+    }
+  });
   app.get("/agendar-inspecciones", async (req, res) => {
-
-    agendar = await Empresa.findAll({
-        where: {
-          '$inspeccions.estatus$': { [Op.eq]: 'En revision' }
-        },
-        include: [{
-          model: Inspeccion, 
-          as: "inspeccions"
-        }]
-    });
-
-    proximas = await Empresa.findAll({
-        where: {
-          '$inspeccions.estatus$': { [Op.eq]: 'Agendada' }
-        },
-        include: [{
-          model: Inspeccion, 
-          as: "inspeccions"
-        }],
-        order: [
-          ['inspeccions', 'fecha', 'ASC']
-        ]
-    });
-
-    res.render(root_dirname + "/views/setInspeccion.html", {agendar: agendar, proximas: proximas});
+    res.render(root_dirname + "/views/loginAgendar.html", {mensaje: null});
   });
   app.get("/form_styles", (req, res) => {
     res.sendFile(root_dirname + "/styles/form_styles.css");

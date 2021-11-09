@@ -41,13 +41,21 @@
                             <div class="col-lg-6 my-auto">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Bienvenido!</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Ingresa las credenciales</h1>
                                     </div>
-                                    <form action="/formOrAlreadySaved" method="POST" class="user">
+                                    <% if(mensaje) {%>
+                                        <div class="text-center mt-n3">
+                                            <p class="small text-danger"><%= mensaje %></p>
+                                        </div>
+                                    <% } %>
+                                    <form action="/login-agendar" method="POST" class="user">
                                         <div class="form-group">
                                             <input type="text" class="form-control form-control-user text-center"
-                                            name="rfc" maxlength="13" aria-describedby="emailHelp"
-                                            placeholder="Ingresa el RFC de la empresa" required>
+                                            name="username" placeholder="Username" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control form-control-user text-center"
+                                            name="password" placeholder="Contraseña" required>
                                         </div>
                                         <button type="submit" class="btn btn-danger btn-user btn-block" style="background-color: #bf1e2e;border-color: #bf1e2e;">
                                             Ingresar
@@ -55,7 +63,7 @@
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small text-danger" href="/agendar-inspecciones">Ingresar como Proteccion Civil</a>
+                                        <a class="small text-danger" href="/">Volver a formulario</a>
                                     </div>
                                 </div>
                             </div>
