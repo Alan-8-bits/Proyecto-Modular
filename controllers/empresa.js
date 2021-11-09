@@ -4,19 +4,19 @@ const Formulario = db.formulario;
 const Inspeccion = db.inspeccion;
 const Op = db.Sequelize.Op;
 
-exports.create = (req, res) => {
+exports.create = async (req, res) => {
   // Validate request
-  if (!req.body.rfc) {
-    res.status(400).send({
-      message: "¡El contenido no puede estar vacío!"
-    });
-    return;
-  }
+  // if (!req.body.rfc) {
+  //   res.status(400).send({
+  //     message: "¡El contenido no puede estar vacío!"
+  //   });
+  //   return;
+  // }
 
-  var giro_form =
-    req.body.giro === "otros" ? req.body.otro_giro : req.body.giro;
+  var giro_form = req.body.giro === "otros" ? req.body.otro_giro : req.body.giro;
+  var emp;
 
-  // Create a Empresa
+  // Create Empresa
   const empresa = {
     razon_social: req.body.razon_social,
     nombre_rep_legal: req.body.nombre_rep_legal,
@@ -27,19 +27,22 @@ exports.create = (req, res) => {
     codigo_postal: req.body.codigo_postal,
     calle_1: req.body.calle_1,
     calle_2: req.body.calle_2,
-    giro: giro_form
+    giro: giro_form,
+    riesgo: req.body.riesgo
   };
 
   // Save Empresa in the database
-  Empresa.create(empresa)
-    .then((data) => {
-      res.send(data);
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message: err.message || "Se produjo un error al crear la empresa."
-      });
+  await Empresa.create(empresa)
+  .then((data) => {
+    emp = data;
+  })
+  .catch((err) => {
+    res.status(500).send({
+      message: err.message || "Se produjo un error al crear la empresa."
     });
+  });
+
+  return emp;
 };
 
 exports.findAll = (req, res) => {

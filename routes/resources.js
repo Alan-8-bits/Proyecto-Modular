@@ -3,6 +3,10 @@ const Empresa = db.empresa;
 const Formulario = db.formulario;
 const Inspeccion = db.inspeccion;
 const Op = db.Sequelize.Op;
+
+const empresaController = require("../controllers/empresa");
+const formularioController = require("../controllers/formulario");
+const inspeccionController = require("../controllers/inspeccion");
 const axios = require('axios');
 
 module.exports = (app, root_dirname) => {
@@ -83,7 +87,6 @@ module.exports = (app, root_dirname) => {
     res.sendFile(root_dirname + "/vendor/sb-admin/sb-admin-2.min.js");
   });
 
-
   app.post("/formOrAlreadySaved", async (req, res) => {
     const rfc = req.body.rfc;
     var condition = rfc ? { rfc: { [Op.eq]: rfc } } : null;
@@ -129,99 +132,14 @@ module.exports = (app, root_dirname) => {
 
   app.post("/submit-forms", async (req, res) => {
 
-    var giro_form = req.body.giro === "otros" ? req.body.otro_giro : req.body.giro;
-    var emp,form,insp;
+    var emp;
 
-    // var json_request = {
-    //   "data": [
-    //     {
-    //       "Giro": giro_form,
-    //     }
-    //   ]
-    // }
-    // // axios request to send form data to the server
-    // await axios.post(process.env.API_AZURE,json_request)
-    // .then(function (response) {
-    //   emp.api = JSON.parse(response.data).result.toString();
-    // })
-    // .catch(function (error) {
-    //   // handle error
-    //   res.send(error);
-    // })
-
-    // req.body.riesgo = 5.0;
-
-    // Create Empresa
-    const empresa = {
-      razon_social: req.body.razon_social,
-      nombre_rep_legal: req.body.nombre_rep_legal,
-      rfc: req.body.rfc,
-      correo: req.body.correo,
-      direccion: req.body.direccion,
-      colonia: req.body.colonia,
-      codigo_postal: req.body.codigo_postal,
-      calle_1: req.body.calle_1,
-      calle_2: req.body.calle_2,
-      giro: giro_form,
-      riesgo: req.body.riesgo
-    };
-
-    // Save Empresa in the database
-    await Empresa.create(empresa)
-    .then((data) => {
-      req.body.empresa_id = data.id;
-      emp = data;
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message: err.message || "Se produjo un error al crear la empresa."
-      });
-    });
+    emp = await empresaController.create(req,res);
+    req.body.empresa_id = emp.id;
     
-    const formulario = {
-      trabajadores_masculinos: req.body.trabajadores_masculinos,
-      trabajadores_femeninos: req.body.trabajadores_femeninos,
-      rengo_edad: req.body.rengo_edad,
-  
-      mtrs: req.body.mtrs,
-      niveles: req.body.niveles,
-      aforo: req.body.aforo,
-  
-      dispositivo: req.body.dispositivo ? req.body.dispositivo.toString() : '',
-      senal: req.body.senal ? req.body.senalamiento.toString() : '',
-      medidas: req.body.medidas ? req.body.recursos.toString() : '',
-  
-      material: req.body.material ? req.body.material.toString() : '',
-      riesgo: req.body.riesgo ? req.body.riesgo.toString() : 'no_especificado',
-  
-      empresa_id: req.body.empresa_id,
-    };
-
-    await Formulario.create(formulario)
-    .then((data) => {
-      form = data;
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message: err.message || "Se produjo un error al crear formulario."
-      });
-    });
-
-    const inspeccion = {
-      fecha: null,
-      estatus: "En revision",
-      empresa_id: req.body.empresa_id,
-    };
-
-    await Inspeccion.create(inspeccion)
-    .then((data) => {
-      insp = data;
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message: err.message || "Se produjo un error al crear formulario."
-      });
-    });
+    await formularioController.create(req,res);
+    
+    await inspeccionController.create(req,res);
 
     res.redirect('/mostrar-empresa?rfc=' + emp.rfc);
   });

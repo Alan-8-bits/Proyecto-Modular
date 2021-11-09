@@ -3,16 +3,17 @@ const Formulario = db.formulario;
 const Empresa = db.empresa;
 const Op = db.Sequelize.Op;
 
-exports.create = (req, res) => {
+exports.create =async (req, res) => {
   // Validate request
-  if (!req.body.trabajadores_masculinos) {
-    res.status(400).send({
-      message: "¡El contenido no puede estar vacío!"
-    });
-    return;
-  }
+  // if (!req.body.trabajadores_masculinos) {
+  //   res.status(400).send({
+  //     message: "¡El contenido no puede estar vacío!"
+  //   });
+  //   return;
+  // }
 
-  // Create a Formulario
+  var form;
+
   const formulario = {
     trabajadores_masculinos: req.body.trabajadores_masculinos,
     trabajadores_femeninos: req.body.trabajadores_femeninos,
@@ -23,8 +24,8 @@ exports.create = (req, res) => {
     aforo: req.body.aforo,
 
     dispositivo: req.body.dispositivo ? req.body.dispositivo.toString() : '',
-    senal: req.body.senal ? req.body.senal.toString() : '',
-    medidas: req.body.medidas ? req.body.medidas.toString() : '',
+    senal: req.body.senal ? req.body.senalamiento.toString() : '',
+    medidas: req.body.medidas ? req.body.recursos.toString() : '',
 
     material: req.body.material ? req.body.material.toString() : '',
     riesgo: req.body.riesgo ? req.body.riesgo.toString() : 'no_especificado',
@@ -32,16 +33,17 @@ exports.create = (req, res) => {
     empresa_id: req.body.empresa_id,
   };
 
-  // Save Formulario in the database
-  Formulario.create(formulario)
-    .then((data) => {
-      res.send(data);
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message: err.message || "Se produjo un error al crear formulario."
-      });
+  await Formulario.create(formulario)
+  .then((data) => {
+    form = data;
+  })
+  .catch((err) => {
+    res.status(500).send({
+      message: err.message || "Se produjo un error al crear formulario."
     });
+  });
+
+  return form;
 };
 
 exports.findAll = (req, res) => {

@@ -3,33 +3,35 @@ const Inspeccion = db.inspeccion;
 const Empresa = db.empresa;
 const Op = db.Sequelize.Op;
 
-exports.create = (req, res) => {
+exports.create = async (req, res) => {
   // Validate request
-  if (!req.body.fecha) {
-    res.status(400).send({
-      message: "¡El contenido no puede estar vacío!"
-    });
-    return;
-  }
+  // if (!req.body.fecha) {
+  //   res.status(400).send({
+  //     message: "¡El contenido no puede estar vacío!"
+  //   });
+  //   return;
+  // }
+
+  var insp;
 
   // Create a Inspeccion
   const inspeccion = {
-      fecha: req.body.fecha,
-      estatus: req.body.estatus,
-      empresa_id: req.body.empresa_id,
+    fecha: null,
+    estatus: "En revision",
+    empresa_id: req.body.empresa_id,
   };
 
-  // Save Inspeccion in the database
-  Inspeccion.create(inspeccion)
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Se produjo un error al crear inspeccion."
-      });
+  await Inspeccion.create(inspeccion)
+  .then((data) => {
+    insp = data;
+  })
+  .catch((err) => {
+    res.status(500).send({
+      message: err.message || "Se produjo un error al crear formulario."
     });
+  });
+
+  return insp;
 };
 
 exports.findAll = (req, res) => {
