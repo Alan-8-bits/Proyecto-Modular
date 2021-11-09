@@ -6,7 +6,8 @@ Instalacion
 - Ejecutar comando ``` npm install ``` en linea de comandos
 - Crear y correr base de datos
 - Adaptar el archivo /.env para la conexion a base de datos
-- Ejecutar ``` sequelize-cli db:migrate ``` 
+- Ejecutar ``` sequelize-cli db:migrate ```
+- Ejecutar ``` sequelize-cli db:seed:all ``` 
 - Ejecutar ``` npm start ```
 
 Interactuar desde algun API tester como [Postman](https://www.postman.com/)
