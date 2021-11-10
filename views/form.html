@@ -111,7 +111,9 @@
 
 <script>
 $(document).ready(function () {
-    $("#datos_generales_form").load("/datos-generales");
+    $("#datos_generales_form").load("/datos-generales", function() {
+        $("#rfcEmpresa").val("<%= rfc %>");
+    });
     $("#giro_form").load("/giro");
     $("#trabajadores_form").load("/trabajadores");
     $("#inmueble_form").load("/inmueble");

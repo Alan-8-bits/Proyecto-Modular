@@ -23,7 +23,10 @@ module.exports = (sequelize, DataTypes) => {
     {
       razon_social: DataTypes.STRING,
       nombre_rep_legal: DataTypes.STRING,
-      rfc: DataTypes.STRING,
+      rfc: {
+        type: DataTypes.STRING,
+        primaryKey: true
+      },
       correo: DataTypes.STRING,
       direccion: DataTypes.STRING,
       colonia: DataTypes.STRING,

@@ -94,7 +94,7 @@
                                                 <td class="border-danger text-danger font-weight-bold"><%= agendar[i].rfc %></td>
                                                 <td class="border-danger text-danger font-weight-bold"><%= String(agendar[i].riesgo) + "%" %></td>
                                                 <td class="border-danger text-danger font-weight-bold">
-                                                    <button type="button" class="btn btn-danger btn-sm openModal" data-empresa="<%= agendar[i].id %>" data-toggle="modal" data-target="#exampleModal">
+                                                    <button type="button" class="btn btn-danger btn-sm openModal" data-empresa="<%= agendar[i].rfc %>" data-toggle="modal" data-target="#exampleModal">
                                                         Agendar Inspeccion
                                                     </button>                                   
                                                 </td>
@@ -152,12 +152,12 @@
                                             <td class="border-danger text-danger font-weight-bold">
                                                 <%= (date_obj.getDate()+1) +"-"+ monthNames[date_obj.getMonth()] +"-"+ (date_obj.getFullYear())  %>
                                                 <br>
-                                                <button type="button" class="btn btn-danger btn-sm openModal" data-empresa="<%= proximas[i].id %>" data-toggle="modal" data-target="#exampleModal">
+                                                <button type="button" class="btn btn-danger btn-sm openModal" data-empresa="<%= proximas[i].rfc %>" data-toggle="modal" data-target="#exampleModal">
                                                     Reagendar Inspeccion
                                                 </button>
                                                 <br>
                                                 <form action="/api/inspecciones/delete" method="POST">
-                                                <button type="submit" class="btn btn-success btn-sm openModal mt-1" name="id" value="<%= proximas[i].id %>">
+                                                <button type="submit" class="btn btn-success btn-sm openModal mt-1" name="id" value="<%= proximas[i].rfc %>">
                                                     Inspeccion Realizada
                                                 </button></form>
                                             </td>

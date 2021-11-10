@@ -2,12 +2,12 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable("empresas", {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER
-      },
+      // id: {
+      //   allowNull: false,
+      //   autoIncrement: true,
+      //   primaryKey: true,
+      //   type: Sequelize.INTEGER
+      // },
       razon_social: {
         type: Sequelize.STRING
       },
@@ -15,6 +15,8 @@ module.exports = {
         type: Sequelize.STRING
       },
       rfc: {
+        allowNull: false,
+        primaryKey: true,
         type: Sequelize.STRING
       },
       correo: {

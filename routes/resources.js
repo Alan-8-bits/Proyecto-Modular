@@ -112,8 +112,8 @@ module.exports = (app, root_dirname) => {
     var emp = await Empresa.findOne({ where: condition });
 
     if (emp !== null) {
-      var insp = await Inspeccion.findOne({ where: { empresa_id: { [Op.eq]: emp.id } } });
-      var form = await Formulario.findOne({ where: { empresa_id: { [Op.eq]: emp.id } } });
+      var insp = await Inspeccion.findOne({ where: { empresa_id: { [Op.eq]: emp.rfc } } });
+      var form = await Formulario.findOne({ where: { empresa_id: { [Op.eq]: emp.rfc } } });
       res.render("showEmpresa.html", {empresa: emp, inspeccion: insp, formulario: form});
     }
     else{
@@ -142,8 +142,8 @@ module.exports = (app, root_dirname) => {
     var emp = await Empresa.findOne({ where: condition });
 
     if (emp !== null) {
-      var insp = await Inspeccion.findOne({ where: { empresa_id: { [Op.eq]: emp.id } } });
-      var form = await Formulario.findOne({ where: { empresa_id: { [Op.eq]: emp.id } } });
+      var insp = await Inspeccion.findOne({ where: { empresa_id: { [Op.eq]: emp.rfc } } });
+      var form = await Formulario.findOne({ where: { empresa_id: { [Op.eq]: emp.rfc } } });
       res.render("showEmpresa.html", {empresa: emp, inspeccion: insp, formulario: form});
     }
   });
@@ -153,7 +153,7 @@ module.exports = (app, root_dirname) => {
     var emp;
 
     emp = await empresaController.create(req,res);
-    req.body.empresa_id = emp.id;
+    req.body.empresa_id = emp.rfc;
     
     await formularioController.create(req,res);
     

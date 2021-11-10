@@ -13,7 +13,6 @@ exports.create = async (req, res) => {
   //   return;
   // }
 
-  var giro_form = req.body.giro === "otros" ? req.body.otro_giro : req.body.giro;
   var emp;
 
   // Create Empresa
@@ -27,7 +26,7 @@ exports.create = async (req, res) => {
     codigo_postal: req.body.codigo_postal,
     calle_1: req.body.calle_1,
     calle_2: req.body.calle_2,
-    giro: giro_form,
+    giro: req.body.giro,
     riesgo: req.body.riesgo
   };
 
