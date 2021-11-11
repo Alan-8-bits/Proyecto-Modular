@@ -89,12 +89,12 @@
                                     <tbody>    
                                         <% for(var i=0; i < agendar.length; i++) {%>
                                             <tr class="odd border-danger">
-                                                <td class="border-danger text-danger font-weight-bold"><%= agendar[i].razon_social %></td>
-                                                <td class="border-danger text-danger font-weight-bold"><%= agendar[i].giro %></td>
-                                                <td class="border-danger text-danger font-weight-bold"><%= agendar[i].rfc %></td>
-                                                <td class="border-danger text-danger font-weight-bold"><%= String(agendar[i].riesgo) + "%" %></td>
+                                                <td class="border-danger text-danger font-weight-bold"><%= agendar[i].empresa.razon_social %></td>
+                                                <td class="border-danger text-danger font-weight-bold"><%= agendar[i].empresa.giro %></td>
+                                                <td class="border-danger text-danger font-weight-bold"><%= agendar[i].empresa.rfc %></td>
+                                                <td class="border-danger text-danger font-weight-bold"><%= String(agendar[i].empresa.riesgo) + "%" %></td>
                                                 <td class="border-danger text-danger font-weight-bold">
-                                                    <button type="button" class="btn btn-danger btn-sm openModal" data-empresa="<%= agendar[i].rfc %>" data-toggle="modal" data-target="#exampleModal">
+                                                    <button type="button" class="btn btn-danger btn-sm openModal" data-inspeccion="<%= agendar[i].id %>" data-toggle="modal" data-target="#exampleModal">
                                                         Agendar Inspeccion
                                                     </button>                                   
                                                 </td>
@@ -143,21 +143,22 @@
                                     <tbody> 
                                         <% for(var i=0; i < proximas.length; i++) {%>   
                                         <tr class="odd border-danger">
-                                            <td class="border-danger text-danger font-weight-bold"><%= proximas[i].razon_social %></td>
-                                            <td class="border-danger text-danger font-weight-bold"><%= proximas[i].giro %></td>
-                                            <td class="border-danger text-danger font-weight-bold"><%= proximas[i].rfc %></td>
-                                            <td class="border-danger text-danger font-weight-bold"><%= String(proximas[i].riesgo) + "%" %></td>
-                                            <% date_obj = proximas[i].inspeccions[0].fecha; %>
+                                            <td class="border-danger text-danger font-weight-bold"><%= proximas[i].empresa.razon_social %></td>
+                                            <td class="border-danger text-danger font-weight-bold"><%= proximas[i].empresa.giro %></td>
+                                            <td class="border-danger text-danger font-weight-bold"><%= proximas[i].empresa.rfc %></td>
+                                            <td class="border-danger text-danger font-weight-bold"><%= String(proximas[i].empresa.riesgo) + "%" %></td>
+                                            <% date_obj = proximas[i].fecha; %>
                                             <% const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio","Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Deciembre"]; %>
                                             <td class="border-danger text-danger font-weight-bold">
                                                 <%= (date_obj.getDate()+1) +"-"+ monthNames[date_obj.getMonth()] +"-"+ (date_obj.getFullYear())  %>
                                                 <br>
-                                                <button type="button" class="btn btn-danger btn-sm openModal" data-empresa="<%= proximas[i].rfc %>" data-toggle="modal" data-target="#exampleModal">
+                                                <button type="button" class="btn btn-danger btn-sm openModal" data-inspeccion="<%= proximas[i].id %>" data-toggle="modal" data-target="#exampleModal">
                                                     Reagendar Inspeccion
                                                 </button>
                                                 <br>
-                                                <form action="/api/inspecciones/delete" method="POST">
-                                                <button type="submit" class="btn btn-success btn-sm openModal mt-1" name="id" value="<%= proximas[i].rfc %>">
+                                                <form action="/api/inspecciones/update" method="POST" id="formInsRealizada">
+                                                <input type="hidden" name="id" value="<%= proximas[i].id %>">
+                                                <button type="button" class="btn btn-success btn-sm mt-1" id="inspeccionRealizada">
                                                     Inspeccion Realizada
                                                 </button></form>
                                             </td>
@@ -193,7 +194,7 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <form action="/set-fecha?inspeccion=" method="POST" id="form_fecha">
+            <form action="/set-fecha" method="POST" id="form_fecha">
             <div class="modal-body">
                 <input type='date' name="fecha" class="form-control border-danger text-danger" /> 
             </div>
@@ -216,13 +217,30 @@
     <!-- Custom scripts for all pages-->
     <script src="/sb-admin-js"></script>
 
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 </body>
 
 </html>
 
 <script>
     $('.openModal').click(function() {
-        $('#form_fecha').attr('action', '/set-fecha?empresa=' + $(this).data('empresa'));
+        $('#form_fecha').attr('action', '/set-fecha?inspeccion=' + $(this).data('inspeccion'));
+    });
+    $('#inspeccionRealizada').click(function() {
+        var form = $(this).parents('form');
+        swal({
+            title: "Estas seguro?",
+            text: 'Esta inspeccion cambiara su estatus a "Realizada" y no sera posible recuperarla',
+            icon: "warning",
+            buttons: ["Cancelar", "Si, Continuar"],
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                form.submit();
+            } 
+        });
     });
 </script>
 

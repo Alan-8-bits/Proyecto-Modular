@@ -64,28 +64,14 @@ exports.findOne = (req, res) => {
     });
 };
 
-exports.update = (req, res) => {
-  const id = req.params.id;
+exports.update = async (req, res) => {
+  const id = req.body.id;
 
-  Inspeccion.update(req.body, {
-    where: { id: id }
-  })
-    .then(num => {
-      if (num == 1) {
-        res.send({
-          message: "Inspeccion was updated successfully."
-        });
-      } else {
-        res.send({
-          message: `Cannot update Inspeccion with id=${id}. Maybe Inspeccion was not found or req.body is empty!`
-        });
-      }
-    })
-    .catch(err => {
-      res.status(500).send({
-        message: "Error updating Inspeccion with id=" + id
-      });
-    });
+  var ins = await Inspeccion.findByPk(id);
+  ins.estatus = "Realizada";
+  await ins.save();
+
+  res.redirect("/agendar-inspecciones");
 };
 
 exports.delete = (req, res) => {

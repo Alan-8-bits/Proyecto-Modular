@@ -172,6 +172,15 @@
 
                         </div>
                     </div>
+                    <% if( inspeccion.estatus == "Realizada" ) {%>
+                    <div class="row justify-content-center mb-4">
+                        <form action="/solicitar-inspeccion" method="POST" class="w-100 mx-5">
+                        <input type="hidden" name="empresa_id" value="<%= empresa.rfc %>">
+                        <button type="button" id="solicitarInspeccion" class="btn btn-danger btn-lg btn-block">
+                            Solicitar nueva inspección
+                        </button></form>
+                    </div>
+                    <% } %>
                 </div>
             </div>
         </div>
@@ -245,6 +254,26 @@
     <!-- Custom scripts for all pages-->
     <script src="/sb-admin-js"></script>
 
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 </body>
 
 </html>
+
+<script>
+    $('#solicitarInspeccion').click(function() {
+        var form = $(this).parents('form');
+        swal({
+            title: "Estas seguro?",
+            text: 'Se creara una nueva solicitud de inspeccion que sera agendada por Proteccion Civil',
+            icon: "warning",
+            buttons: ["Cancelar", "Si, Continuar"],
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                form.submit();
+            } 
+        });
+    });
+</script>

@@ -47,26 +47,29 @@ module.exports = (app, root_dirname) => {
     var auth = await bcrypt.compare(req.body.password, usuario.password);
 
     if (auth) {
-      agendar = await Empresa.findAll({
+      agendar = await Inspeccion.findAll({
           where: {
-            '$inspeccions.estatus$': { [Op.eq]: 'En revision' }
+            estatus: { [Op.eq]: 'En revision' }
           },
           include: [{
-            model: Inspeccion, 
-            as: "inspeccions"
-          }]
-      });
-
-      proximas = await Empresa.findAll({
-          where: {
-            '$inspeccions.estatus$': { [Op.eq]: 'Agendada' }
-          },
-          include: [{
-            model: Inspeccion, 
-            as: "inspeccions"
+            model: Empresa, 
+            as: "empresa"
           }],
           order: [
-            ['inspeccions', 'fecha', 'ASC']
+            ['empresa','riesgo', 'DESC']
+          ]
+      });
+
+      proximas = await Inspeccion.findAll({
+          where: {
+            estatus: { [Op.eq]: 'Agendada' }
+          },
+          include: [{
+            model: Empresa, 
+            as: "empresa"
+          }],
+          order: [
+            ['fecha', 'ASC']
           ]
       });
 
@@ -112,9 +115,7 @@ module.exports = (app, root_dirname) => {
     var emp = await Empresa.findOne({ where: condition });
 
     if (emp !== null) {
-      var insp = await Inspeccion.findOne({ where: { empresa_id: { [Op.eq]: emp.rfc } } });
-      var form = await Formulario.findOne({ where: { empresa_id: { [Op.eq]: emp.rfc } } });
-      res.render("showEmpresa.html", {empresa: emp, inspeccion: insp, formulario: form});
+      res.redirect('/mostrar-empresa?rfc=' + rfc);
     }
     else{
       res.render("form.html", { rfc: rfc });
@@ -123,14 +124,10 @@ module.exports = (app, root_dirname) => {
 
   app.post("/set-fecha", async (req, res) => {
 
-    var inspeccion = await Inspeccion.findOne({ 
-      where: {
-        empresa_id: { [Op.eq]: req.query.empresa} 
-      }});
-
-    inspeccion.fecha = req.body.fecha;
-    inspeccion.estatus = 'Agendada';
-    await inspeccion.save();
+    var ins = await Inspeccion.findByPk(req.query.inspeccion);
+    ins.fecha = req.body.fecha;
+    ins.estatus = 'Agendada';
+    await ins.save();
 
     res.redirect("/agendar-inspecciones");
   });
@@ -142,7 +139,7 @@ module.exports = (app, root_dirname) => {
     var emp = await Empresa.findOne({ where: condition });
 
     if (emp !== null) {
-      var insp = await Inspeccion.findOne({ where: { empresa_id: { [Op.eq]: emp.rfc } } });
+      var insp = await Inspeccion.findOne({ where: { empresa_id: { [Op.eq]: emp.rfc } } , order: [ ['createdAt', 'DESC'] ]});
       var form = await Formulario.findOne({ where: { empresa_id: { [Op.eq]: emp.rfc } } });
       res.render("showEmpresa.html", {empresa: emp, inspeccion: insp, formulario: form});
     }
@@ -160,5 +157,12 @@ module.exports = (app, root_dirname) => {
     await inspeccionController.create(req,res);
 
     res.redirect('/mostrar-empresa?rfc=' + emp.rfc);
+  });
+
+  app.post("/solicitar-inspeccion", async (req, res) => {
+    
+    await inspeccionController.create(req,res);
+
+    res.redirect('/mostrar-empresa?rfc=' + req.body.empresa_id);
   });
 };

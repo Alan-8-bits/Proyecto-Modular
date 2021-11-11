@@ -38,7 +38,7 @@ module.exports = (app) => {
   router.delete("/formularios/", formularioController.deleteAll);
 
   // Create a new Inspeccion
-  router.post("/inspecciones/", inspeccionController.create);
+  router.post("/inspecciones/create", inspeccionController.create);
   // // Retrieve all Inspecciones
   router.get("/inspecciones/", inspeccionController.findAll);
   // // Retrieve Inspeccion's Empresa
@@ -46,7 +46,7 @@ module.exports = (app) => {
   // // Retrieve a single Inspeccion with id
   router.get("/inspecciones/:id", inspeccionController.findOne);
   // // Update a Inspeccion with id
-  router.put("/inspecciones/:id", inspeccionController.update);
+  router.post("/inspecciones/update", inspeccionController.update);
   // // Delete a Inspeccion with id
   router.post("/inspecciones/delete", inspeccionController.delete);
   // // Delete all Inspecciones
